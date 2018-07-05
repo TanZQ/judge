@@ -1,32 +1,27 @@
-<!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<!doctype html>
+<html>
 <head>
-    <title>Sample</title>
+<meta charset="utf-8">
+<link href="main.css" type="text/css" rel="stylesheet">
+<title>登陆界面</title>
 </head>
-<body>
-    <h1 th:inline="text">Sample</h1>
-    <table>
-        <!-- 名称 -->
-        <thead>
-             <tr>
-                 <th >id</th>
-                 <th >学号</th>
-                 <th >姓名</th>
-                 <th >成绩</th>
-             </tr>
 
-         </thead>
-         <!-- 动态插入内容 -->
-         <tbody>
-             <tr th:each="s,iterStat : ${students}" th:class="${iterStat.odd}? 'odd'">
-                     <td th:text=" ${s.getId()}"></td>
-                 　　<td th:text=" ${s.getNo()}"></td>
-                 　　<td th:text=" ${s.getName()}"></td>
-                 　　<td th:text=" ${s.getScore()}"></td>
-                    </td>
-             </tr>
-         </tbody>
-    </table>
+<body>
+
+<h1 th:inline="text">能力规范管理系统</h1>
+    <div class="login_putin">
+    	<ul>
+    	用户名
+        	<li><input type="text" ></li>
+        密码
+            <li><input type="password" ></li>
+        </ul>
+    </div>
+    <a href="/stu/login">
+    <button>登录</button>
+    </a>
+    <a href="/stu/register">
+    <button>注册</button>
+    </a>
 </body>
 </html>
