@@ -11,6 +11,7 @@ public class Logoff {
         user.useornot="yes";
         list=userDAO.select(user);
         list.get(0).useornot="no";
+
         userDAO.update(list.get(0));
     }
 }
