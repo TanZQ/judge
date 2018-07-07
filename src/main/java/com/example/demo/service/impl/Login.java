@@ -13,7 +13,6 @@ public class Login {
         return list.get(0).identity;
     }
     public void recordusinguser(){
-        list.get(0).useornot="yes";
         userDAO.update(list.get(0));
     }
 }
