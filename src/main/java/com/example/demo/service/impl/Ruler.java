@@ -49,7 +49,6 @@ public class Ruler {
         user1.useornot="yes";
         list=userServiceImpl.select(user1);
         correct.acceptpeople=list.get(0).name;
-        correct.acceptornot="yes";
         boolean success=correctServiceImpl.update(correct);
         return success;
     }

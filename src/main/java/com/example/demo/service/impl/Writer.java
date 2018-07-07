@@ -36,4 +36,21 @@ public class Writer {
         boolean success=userServiceImpl.update(user);
         return success;
     }
+    public List<Correct> showyourcorrent(){
+        Correct correct0=new Correct();
+        List<Correct> list0;
+        this.user.useornot="yes";
+        this.userlist=userServiceImpl.select(this.user);
+        correct.author=this.userlist.get(0).name;
+        list0=correctServiceImpl.select(correct);
+        return list0;
+    }
+    public boolean update(Correct correct){
+        boolean success=correctServiceImpl.update(correct);
+        return success;
+    }
+    public boolean delete(Correct correct){
+        boolean success=correctServiceImpl.delete(correct);
+        return success;
+    }
 }
