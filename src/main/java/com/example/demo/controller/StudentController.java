@@ -30,22 +30,45 @@ public class StudentController {
         return "student";
 
     }
-    @RequestMapping(value = "/stu/login",method = RequestMethod.GET)
-    public String login(HttpServletRequest request){
+    @RequestMapping(value = "/stu/writerTian",method = RequestMethod.GET)
+    public String writerTian(HttpServletRequest request){
         List<Student> list = studentService.getAllStudent();
         request.setAttribute("students",list);
         // aaaaaa
-        return "login";
+        return "writerTian";
 
     }
-    @RequestMapping(value = "/stu/register",method = RequestMethod.GET)
-    public String register(HttpServletRequest request){
+    @RequestMapping(value = "/stu/writerGuifan",method = RequestMethod.GET)
+    public String writerGuifan(HttpServletRequest request){
         List<Student> list = studentService.getAllStudent();
         request.setAttribute("students",list);
         // aaaaaa
-        return "register";
+        return "writerGuifan";
 
     }
+    @RequestMapping(value = "/stu/writerTianChange",method = RequestMethod.GET)
+    public String writerTianChange(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "writerTianChange";
 
+    }
+    @RequestMapping(value = "/stu/writerGuifanChange",method = RequestMethod.GET)
+    public String writerGuifanChange(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "writerGuifanChange";
+
+    }
+    @RequestMapping(value = "/stu/writerInfoChange",method = RequestMethod.GET)
+    public String writerInfoChange(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "writerInfoChange";
+
+    }
 
 }

@@ -118,6 +118,11 @@
                            </div>
                            <br>
                            <div class="input-group">
+                              <span class="input-group-addon"家庭住址</span>
+                              <input type="text" class="form-control" placeholder="请输入家庭住址">
+                           </div>
+                           <br>
+                           <div class="input-group">
                               <span class="input-group-addon">推荐人</span>
                               <input type="text" class="form-control" placeholder="请输入推荐人姓名">
                            </div>
