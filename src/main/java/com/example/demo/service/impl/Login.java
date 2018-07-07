@@ -4,7 +4,7 @@ import com.example.demo.entity.User;
 import com.example.demo.service.impl.UserServiceImpl;
 import java.util.List;
 public class Login {
-    public User user;
+    public User user=new User();
     public List<User> list;
     public UserServiceImpl userServiceImpl;
     public String login(User user){
