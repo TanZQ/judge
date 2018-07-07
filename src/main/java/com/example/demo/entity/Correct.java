@@ -6,7 +6,7 @@ public class Correct {
    public  int Tno=001;
    public String Tname="0";
    public String author="0";
-   public String date="00";
+   public String date="0";
    public String acceptornot="0";
    public String acceptpeople="0";
    public String text="0";
