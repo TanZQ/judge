@@ -6,8 +6,8 @@ import com.example.demo.entity.User;
 import com.example.demo.service.impl.UserServiceImpl;
 import java.util.List;
 public class Writer {
-    public Correct correct;
-    public User user;
+    public Correct correct=new Correct();
+    public User user=new User();
     public List<Correct> correctlist;
     public List<User> userlist;
     public CorrectServiceImpl correctServiceImpl;
@@ -21,6 +21,9 @@ public class Writer {
         this.correct=correct;
         this.correct.acceptornot="no";
         this.correct.acceptpeople="noone";
+        this.user.useornot="yes";
+        this.userlist=userServiceImpl.select(this.user);
+        this.correct.author=this.userlist.get(0).name;
         boolean success=correctServiceImpl.insert(this.correct);
         return success;
     }

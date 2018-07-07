@@ -10,4 +10,5 @@ public class Correct {
    public String acceptornot;
    public String acceptpeople;
    public String text;
+   public String type;
 }
