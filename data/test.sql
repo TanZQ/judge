@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 --  Table structure for `student`
 -- ----------------------------
-drop table if exists 'ser';
+drop table if exists 'User';
 CREATE TABLE 'User'(
   'username' varchar(8) character set utf8 default 'admin' comment '用户名',
   'password' varchar(8) character set utf8 default '12345678' comment '密码',
