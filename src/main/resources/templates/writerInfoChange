@@ -1,0 +1,338 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="main.css" type="text/css" rel="stylesheet">
+        <title>能力规范管理系统</title>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <!--导航栏-->
+    	<nav class="navbar navbar-inverse" role="navigation">
+        	<div class="container-fluid">
+        		<div class="navbar-header">
+        			<a class="navbar-brand" href="#">能理规范管理系统</a>
+        		</div>
+        		<div>
+        			<ul class="nav navbar-nav">
+        				<li><a href="writerTian">提案管理</a></li>
+        				<li><a href="writerGuifan">规范管理</a></li>
+        				<li class="dropdown active">
+                        	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        	    信息维护<b class="caret"></b>
+                        	</a>
+                        	<ul class="dropdown-menu">
+                        		<li><a href="writerTianChange">修改提案</a></li>
+                        		<li><a href="writerGuifanChange">修改规范</a></li>
+                        		<li><a href="#">修改个人信息</a></li>
+                        	</ul>
+                        </li>
+        			</ul>
+        		</div>
+        	</div>
+        </nav>
+    <!--内容-->
+        <div style="background-color:#D7D7D7; margin-left:25%; margin-right:25%;" >
+        	<div align="center" style="font-size:24px; padding-top:2%; padding-bottom:2%">个人信息修改</div>
+        	<div style="padding-top:2%">
+        		<table class="table table-striped">
+        			<tr>
+        				<td align="center">姓名</td>
+        				<td align="center">123</td>
+        				<td align="center">
+        				    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalName">修改</button>
+        				</td>
+        			</tr>
+        			<tr>
+        				<td align="center">性别</td>
+        				<td align="center">123</td>
+        				<td align="center">
+        				    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalSex">修改</button>
+        				</td>
+        			</tr>
+        			<tr>
+        				<td align="center">联系方式</td>
+        				<td align="center">432</td>
+        				<td align="center">
+        				    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalPhone">修改</button>
+        				</td>
+        			</tr>
+        			<tr>
+        				<td align="center">出生日期</td>
+        				<td align="center">432</td>
+        				<td align="center">
+        			    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalBorn">修改</button>
+        				</td>
+        			</tr>
+        			<tr>
+        				<td align="center">家庭住址</td>
+        				<td align="center">432</td>
+        				<td align="center">
+        				    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalAddress">修改</button>
+        				</td>
+        			</tr>
+        			<tr>
+        				<td align="center">推荐人</td>
+        				<td align="center">432</td>
+        				<td align="center">
+        			    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalLeader">修改</button>
+        			    </td>
+        			</tr>
+        			<tr>
+        				<td align="center">行业分会</td>
+        				<td align="center">432</td>
+        				<td align="center">
+        			    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalCommunity">修改</button>
+        			    </td>
+        			</tr>
+        			<tr>
+        				<td align="center">专委会</td>
+        				<td align="center">432</td>
+        				<td align="center">
+        			    	<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModalCompany">修改</button>
+        			    </td>
+        			</tr>
+        		</table>
+        	</div>
+        	<div style="padding-bottom:2%; padding-right:2%" align="right">
+        	    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalPassword">修改密码</button>
+        	</div>
+        	<!--修改姓名-->
+        	<div class="modal fade" id="myModalName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改姓名
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                              <span class="input-group-addon">姓名</span>
+                              <input type="text" class="form-control" placeholder="请输入姓名">
+                        </div>
+        				<div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        	<!--修改性别-->
+        	<div class="modal fade" id="myModalSex" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改性别
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                            <span class="input-group-addon">性别</span>
+                            <table width="100%" height="35px">
+                                <tr>
+                                    <td align="center"><input type="radio" name="sex" value="male" checked>男</td>
+                                    <td align="center"><input type="radio" name="sex" value="female"> 女</td>
+                                </tr>
+                            </table>
+                        </div>
+        				<div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        	<!--修改联系方式-->
+        	<div class="modal fade" id="myModalPhone" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改联系方式
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                            <span class="input-group-addon">联系方式</span>
+                            <input type="text" class="form-control" placeholder="请输入手机或座机号码">
+                        </div>
+                        <div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        	<!--修改出生日期-->
+        	<div class="modal fade" id="myModalBorn" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改出生日期
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                            <span class="input-group-addon">出生日期</span>
+                            <input type="date" class="form-control">
+                        </div>
+        				<div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        	<!--修改家庭住址-->
+        	<div class="modal fade" id="myModalAddress" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改家庭住址
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                             <span class="input-group-addon">家庭住址</span>
+                             <input type="text" class="form-control" placeholder="请输入家庭住址">
+                        </div>
+        				<div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        	<!--修改推荐人-->
+        	<div class="modal fade" id="myModalLeader" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改推荐人
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                              <span class="input-group-addon">推荐人</span>
+                              <input type="text" class="form-control" placeholder="请输入推荐人姓名">
+                        </div>
+        				<div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        	<!--修改行业分会-->
+        	<div class="modal fade" id="myModalCommunity" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改行业分会
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                            <span class="input-group-addon">行业分会</span>
+                             <select class="form-control">
+                                 <option value="分会1">分会1</option>
+                                 <option value="分会2">分会2</option>
+                                 <option value="分会3">分会3</option>
+                                 <option value="分会4">分会4</option>
+                                 <option value="分会5">分会5</option>
+                             </select>
+                        </div>
+        				<div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        	<!--修改专委会-->
+        	<div class="modal fade" id="myModalCompany" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改专委会
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                            <span class="input-group-addon">专委会</span>
+                            <select class="form-control">
+                                <option value="专委会1">专委会1</option>
+                                <option value="专委会2">专委会2</option>
+                                <option value="专委会3">专委会3</option>
+                                <option value="专委会4">专委会4</option>
+                                <option value="专委会5">专委会5</option>
+                            </select>
+                        </div>
+        				<div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        	<!--修改密码-->
+        	<div class="modal fade" id="myModalPassword" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        		<div class="modal-dialog">
+        		    <div class="modal-content">
+        			    <div class="modal-header">
+        				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        				        &times;
+        				    </button>
+        				    <h4 class="modal-title" id="myModalLabel" align="center">
+        				        修改密码
+        				    </h4>
+        				</div>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                              <span class="input-group-addon">原密码</span>
+                              <input type="password" class="form-control" placeholder="请输入原密码">
+                        </div>
+                        <br>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                              <span class="input-group-addon">新密码</span>
+                              <input type="password" class="form-control" placeholder="请输入新密码">
+                        </div>
+                        <br>
+                        <div class="input-group" style="margin-left:10%; margin-right:10%">
+                              <span class="input-group-addon">再次输入新密码</span>
+                              <input type="password" class="form-control" placeholder="请再次输入新密码">
+                        </div>
+        				<div class="modal-footer">
+        					<button type="button" class="btn btn-default">提交</button>
+        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+        				</div>
+        			</div><!-- /.modal-content -->
+        		</div><!-- /.modal -->
+        	</div>
+        </div>
+    </body>
+</html>
