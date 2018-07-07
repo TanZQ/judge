@@ -46,6 +46,7 @@ CREATE TABLE 'Correct'(
   'date' varchar(8) CHARACTER SET utf8 DEFAULT '20000101' comment '日期',
   'acceptornot' varchar(100) character set utf8 default 'no' comment '过审情况',
   'acceptpeople' varchar(100) character set utf8 default '张三' comment '过审人',
+  'type' VARCHAR(100) character set utf8 default '提案' comment '类型',
   'text' varchar(500) character set utf8 default '空' comment '文本',
   primary key ('Tno')
 )engine =InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8 comment='规范表';
