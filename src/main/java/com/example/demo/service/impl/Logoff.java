@@ -1,10 +1,10 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.User;
-import com.example.demo.dao.UserDao;
+import com.example.demo.dao.UserDAO;
 import java.util.List;
 public class Logoff {
-    public UserDao userDAO;
+    public UserDAO userDAO;
     public List<User> list;
     public void logoff(){
         User user=new User();
