@@ -13,5 +13,4 @@ public class User {
         public String community;
         public String company;
         public String identity;
-        public String useornot;
 }
