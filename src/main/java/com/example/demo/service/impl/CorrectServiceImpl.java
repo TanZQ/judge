@@ -11,6 +11,8 @@ public class CorrectServiceImpl implements CorrectService{
 
     @Autowired
     private CorrectDao correctDao;
+    private List<Correct> L1,L2;
+    private String Tno;
 
     @Override
     public List<Correct> getAllCorrect()
@@ -21,7 +23,56 @@ public class CorrectServiceImpl implements CorrectService{
     @Override
     public List<Correct> select(Correct correct)
     {
-        return correctDao.select(correct);
+        if(correctDao.select(correct.Tname)!=null)
+            L1=correctDao.select(correct.Tname);
+        Tno=Integer.toString(correct.Tno);
+        if(correctDao.select(Tno)!=null)
+        {
+            L2 = correctDao.select(Tno);
+            L1.retainAll(L2);
+            L2 = null;
+        }
+        if(correctDao.select(correct.author)!=null)
+        {
+            L2 = correctDao.select(correct.author);
+            L1.retainAll(L2);
+            L2 = null;
+        }
+        if(correctDao.select(correct.date)!=null)
+        {
+            L2 = correctDao.select(correct.date);
+            L1.retainAll(L2);
+            L2 = null;
+        }
+        if(correctDao.select(correct.acceptornot)!=null)
+        {
+            L2 = correctDao.select(correct.acceptornot);
+            L1.retainAll(L2);
+            L2 = null;
+        }
+        if(correctDao.select(correct.acceptpeople)!=null)
+        {
+            L2 = correctDao.select(correct.acceptpeople);
+            L1.retainAll(L2);
+            L2 = null;
+        }
+        if(correctDao.select(correct.type)!=null)
+        {
+            L2 = correctDao.select(correct.type);
+            L1.retainAll(L2);
+            L2 = null;
+        }
+        if(correctDao.select(correct.text)!=null)
+        {
+            L2 = correctDao.select(correct.text);
+            L1.retainAll(L2);
+            L2 = null;
+        }
+
+
+
+
+        return L1;
     }
 
     @Override

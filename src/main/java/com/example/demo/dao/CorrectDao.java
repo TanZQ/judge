@@ -10,8 +10,10 @@ import java.util.List;
 @Mapper
 public interface CorrectDao {
     @Select(value = "SELECT * FROM Correct")
-    List<Correct> select(Correct correct);
+
     List<Correct> getAllCorrect();
+
+    List<Correct> select(String word);
 
     @Select(value = "SELECT Tno FROM Correct")
     List<Correct> search(Correct correct);

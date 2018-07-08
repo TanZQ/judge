@@ -7,9 +7,9 @@ import java.util.List;
 @Mapper
 public interface UserDao {
     @Select(value = "SELECT * FROM User")
-    List<User> select(User user);
-
     List<User> getAllUser();
+
+    List<User>select(String word);
 
     @Select(value = "SELECT username FROM User")
 
