@@ -1,12 +1,11 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.User;
-import com.example.demo.service.impl.UserServiceImpl;
 import java.util.List;
 public class Login {
     public User user=new User();
     public List<User> list;
-    public UserServiceImpl userServiceImpl;
+    private UserServiceImpl userServiceImpl=new UserServiceImpl();
     public String login(User user){
         this.user=user;
         this.list=userServiceImpl.select(this.user);

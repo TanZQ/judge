@@ -1,21 +1,19 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.Correct;
-import com.example.demo.service.impl.CorrectServiceImpl;
 import com.example.demo.entity.User;
-import com.example.demo.service.impl.UserServiceImpl;
 import java.util.List;
 public class Writer {
-    public Correct correct=new Correct();
-    public User user=new User();
-    public List<Correct> correctlist;
-    public List<User> userlist;
-    public CorrectServiceImpl correctServiceImpl;
-    public UserServiceImpl userServiceImpl;
+    private Correct correct=new Correct();
+    private User user=new User();
+    private List<User> userlist;
+    private CorrectServiceImpl correctServiceImpl=new CorrectServiceImpl();
+    private UserServiceImpl userServiceImpl=new UserServiceImpl();
     public List<Correct> proposalsearching(Correct correct){
+        List<Correct> correctlist;
         this.correct=correct;
-        this.correctlist=correctServiceImpl.select(this.correct);
-        return this.correctlist;
+        correctlist=correctServiceImpl.select(this.correct);
+        return correctlist;
     }
     public boolean proposalwriting(Correct correct){
         this.correct=correct;
@@ -24,8 +22,7 @@ public class Writer {
         this.user.useornot="yes";
         this.userlist=userServiceImpl.select(this.user);
         this.correct.author=this.userlist.get(0).name;
-        boolean success=correctServiceImpl.insert(this.correct);
-        return success;
+        return correctServiceImpl.insert(this.correct);
     }
     public User informationmaintenance(){
         this.user.useornot="yes";
@@ -33,8 +30,7 @@ public class Writer {
         return this.userlist.get(0);
     }
     public boolean changeinformation(User user){
-        boolean success=userServiceImpl.update(user);
-        return success;
+        return userServiceImpl.update(user);
     }
     public List<Correct> showyourcorrent(){
         Correct correct0=new Correct();
@@ -46,11 +42,9 @@ public class Writer {
         return list0;
     }
     public boolean update(Correct correct){
-        boolean success=correctServiceImpl.update(correct);
-        return success;
+        return correctServiceImpl.update(correct);
     }
     public boolean delete(Correct correct){
-        boolean success=correctServiceImpl.delete(correct);
-        return success;
+        return correctServiceImpl.delete(correct);
     }
 }
