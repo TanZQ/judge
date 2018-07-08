@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+        <link href="main.css" type="text/css" rel="stylesheet">
+        <title>能力规范管理系统</title>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+    <!--导航栏-->
+     	<nav class="navbar navbar-inverse" role="navigation">
+         	<div class="container-fluid">
+         		<div class="navbar-header">
+         			<a class="navbar-brand" href="#">能理规范管理系统</a>
+         		</div>
+         		<div>
+         			<ul class="nav navbar-nav">
+         				<li class="dropdown">
+                         	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                         	    身份管理<b class="caret"></b>
+                         	</a>
+                         	<ul class="dropdown-menu">
+                         		<li><a href="rulerIDManage">注册审核</a></li>
+                         		<li><a href="rulerIDUpAndDel">写者管理</a></li>
+                         	</ul>
+                        </li>
+                        <li class="dropdown">
+                         	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                         	    提案管理<b class="caret"></b>
+                         	</a>
+                         	<ul class="dropdown-menu">
+                         		<li><a href="rulerTianManage">提案审批</a></li>
+                         		<li><a href="rulerTianDel">提案管理</a></li>
+                         	</ul>
+                         </li>
+                        <li class="dropdown active">
+                         	<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                         	   规范管理<b class="caret"></b>
+                         	</a>
+                         	<ul class="dropdown-menu">
+                         		<li><a href="#">规范审批</a></li>
+                         		<li><a href="rulerGuifanDel">规范管理</a></li>
+                         	</ul>
+                         </li>
+         			</ul>
+         		</div>
+                <div align="right" style="padding-top:10px">
+         		    <a href="getAllStudent">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-log-out"></span>注销
+                        </button>
+                    </a>
+         		<div>
+         	</div>
+         </nav>
+ 		<!--页面内容-->
+ 		<div style="background-color:#D7D7D7; margin-left:25%; margin-right:25%;" >
+         	<div align="center" style="font-size:24px; padding-top:2%; padding-bottom:2%">待审核规范</div>
+         	<div style="padding-top:2%">
+         		<table class="table table-striped">
+         			<tr>
+ 						<td align="center" style="width:20%">规范编号</td>
+         				<td align="center" style="width:20%">规范名称</td>
+         				<td align="center" style="width:20%">规范作者</td>
+         				<td align="center" style="width:20%">详细信息</td>
+         				<td align="center">操作</td>
+         			</tr>
+         			<tr>
+ 						<td align="center">123</td>
+         				<td align="center">123</td>
+         				<td align="center">123</td>
+         				<td align="center">
+ 							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">查看详情</button>
+ 						</td>
+         				<td align="center">
+ 							<button type="button" class="btn btn-default">同意</button>
+ 							<button type="button" class="btn btn-default">拒绝</button>
+ 						</td>
+         			</tr>
+         			<tr>
+ 						<td align="center">23</td>
+         				<td align="center">123</td>
+         				<td align="center">123</td>
+         				<td align="center">
+ 							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">查看详情</button>
+ 						</td>
+         				<td align="center">
+ 							<button type="button" class="btn btn-default">同意</button>
+ 							<button type="button" class="btn btn-default">拒绝</button>
+ 						</td>
+         			</tr>
+         		</table>
+         	</div>
+         	<!--规范详情-->
+         	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+         		<div class="modal-dialog">
+         		    <div class="modal-content">
+         			    <div class="modal-header">
+         				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+         				        &times;
+         				    </button>
+         				    <h4 class="modal-title" id="myModalLabel" align="center">
+         				        详细信息
+         				    </h4>
+         				</div>
+         				<div class="modal-body">
+                         	<div style="padding-top:2%; padding-left:10%; padding-right:10%">
+ 								<table class="table">
+ 									<tr>
+ 										<td align="center" style="width:50%">规范编号</td>
+ 										<td align="center">123</td>
+ 									</tr>
+ 									<tr>
+ 										<td align="center">规范名称</td>
+ 										<td align="center">123</td>
+ 									</tr>
+ 									<tr>
+ 										<td align="center">规范作者</td>
+ 										<td align="center">432</td>
+ 									</tr>
+ 									<tr>
+ 										<td align="center">提交日期</td>
+ 										<td align="center">432</td>
+ 									</tr>
+ 									<tr>
+ 										<td align="center">规范内容</td>
+ 										<td align="center">432</td>
+ 									</tr>
+ 								</table>
+ 							</div>
+         				</div>
+         				<div class="modal-footer">
+         				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+         				</div>
+         			</div><!-- /.modal-content -->
+         		</div><!-- /.modal -->
+         	</div>
+        </div>
+    </body>
+</html>

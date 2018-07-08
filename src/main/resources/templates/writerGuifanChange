@@ -31,6 +31,13 @@
                         </li>
         			</ul>
         		</div>
+                <div align="right" style="padding-top:10px">
+         		    <a href="getAllStudent">
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-log-out"></span>注销
+                        </button>
+                    </a>
+         		<div>
         	</div>
         </nav>
     <!--内容-->
