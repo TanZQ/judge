@@ -70,5 +70,52 @@ public class StudentController {
         return "writerInfoChange";
 
     }
+    @RequestMapping(value = "/stu/rulerIDManage",method = RequestMethod.GET)
+    public String rulerIDManage(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "rulerIDManage";
 
+    }
+    @RequestMapping(value = "/stu/rulerIDUpAndDel",method = RequestMethod.GET)
+    public String rulerIDUpAndDel(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "rulerIDUpAndDel";
+
+    }
+    @RequestMapping(value = "/stu/rulerTianManage",method = RequestMethod.GET)
+    public String rulerTianManage(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "rulerTianManage";
+
+    }
+    @RequestMapping(value = "/stu/rulerTianDel",method = RequestMethod.GET)
+    public String rulerTianDel(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "rulerTianDel";
+
+    }
+    @RequestMapping(value = "/stu/rulerGuifanManage",method = RequestMethod.GET)
+    public String rulerGuifanManage(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "rulerGuifanManage";
+
+    }
+    @RequestMapping(value = "/stu/rulerGuifanDel",method = RequestMethod.GET)
+    public String rulerGuifanDel(HttpServletRequest request){
+        List<Student> list = studentService.getAllStudent();
+        request.setAttribute("students",list);
+        // aaaaaa
+        return "rulerGuifanDel";
+
+    }
 }
