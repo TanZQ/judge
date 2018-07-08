@@ -1,47 +1,46 @@
 package com.example.demo.service.impl;
 import com.example.demo.entity.Correct;
-import com.example.demo.service.impl.CorrectServiceImpl;
 import com.example.demo.entity.User;
-import com.example.demo.service.impl.UserServiceImpl;
 import java.util.List;
 public class Ruler {
-    public User waiting=new User();
-    public User writer=new User();
-    public Correct tian=new Correct();
-    public Correct guifan=new Correct();
-    public UserServiceImpl userServiceImpl;
-    public CorrectServiceImpl correctServiceImpl;
-    List<User> listwaiting;
-    List<User> listwriter;
-    List<Correct> listtian;
-    List<Correct> listguifan;
+    private User waiting=new User();
+    private User writer=new User();
+    private User user=new User();
+    private Correct tian=new Correct();
+    private Correct guifan=new Correct();
+    private UserServiceImpl userServiceImpl=new UserServiceImpl();
+    private CorrectServiceImpl correctServiceImpl=new CorrectServiceImpl();
+    private List<Correct> correctlist;
     public List<User> identitymanagement_waiting(){
+        List<User> listwaiting;
         this.waiting.identity="waiting";
-        this.listwaiting=userServiceImpl.select(this.waiting);
-        return this.listwaiting;
+        listwaiting=userServiceImpl.select(this.waiting);
+        return listwaiting;
     }
     public List<User> identitymanagement_writer(){
+        List<User> listwriter;
         this.writer.identity="writer";
-        this.listwriter=userServiceImpl.select(this.writer);
-        return this.listwriter;
+        listwriter=userServiceImpl.select(this.writer);
+        return listwriter;
     }
     public List<Correct> proposalmanagement_tian(){
+        List<Correct> listtian;
         this.tian.type="tian";
-        this.listtian=correctServiceImpl.select(this.tian);
-        return this.listtian;
+        listtian=correctServiceImpl.select(this.tian);
+        return listtian;
     }
     public List<Correct> proposalmanagement_guifann(){
+        List<Correct> listguifan;
         this.guifan.type="guifan";
-        this.listguifan=correctServiceImpl.select(this.guifan);
-        return this.listguifan;
+        listguifan=correctServiceImpl.select(this.guifan);
+        return listguifan;
     }
     public boolean update(User user){
-        if(user.identity=="waiting")
+        if(user.identity.equals("waiting"))
             user.identity="writer";
-        else if(user.identity=="writer")
+        else if(user.identity.equals("writer"))
             user.identity="manager";
-        boolean success=userServiceImpl.update(user);
-        return success;
+        return userServiceImpl.update(user);
     }
     public boolean update(Correct correct){
         User user1=new User();
@@ -49,15 +48,23 @@ public class Ruler {
         user1.useornot="yes";
         list=userServiceImpl.select(user1);
         correct.acceptpeople=list.get(0).name;
-        boolean success=correctServiceImpl.update(correct);
-        return success;
+        return correctServiceImpl.update(correct);
     }
     public boolean delete(User user){
-        boolean success=userServiceImpl.delete(user);
-        return success;
+        return userServiceImpl.delete(user);
     }
     public boolean delete(Correct correct){
-        boolean success=correctServiceImpl.delete(correct);
-        return success;
+        return correctServiceImpl.delete(correct);
+    }
+    public boolean proposalwriting(Correct correct){
+        Correct correct1;
+        List<User> userlist;
+        this.user.useornot="yes";
+        userlist=userServiceImpl.select(this.user);
+        correct1=correct;
+        correct1.acceptornot="no";
+        correct1.acceptpeople="noone";
+        correct1.author=userlist.get(0).name;
+        return correctServiceImpl.insert(correct1);
     }
 }
