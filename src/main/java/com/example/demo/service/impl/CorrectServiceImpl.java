@@ -4,9 +4,10 @@ import com.example.demo.dao.CorrectDao;
 import com.example.demo.entity.Correct;
 import com.example.demo.service.CorrectService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class CorrectServiceImpl implements CorrectService{
 
     @Autowired
