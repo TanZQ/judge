@@ -42,7 +42,7 @@ CREATE TABLE `User`(
 
 drop table if exists `Correct`;
 CREATE TABLE `Correct`(
-  `Tno` INT(8) NOT NULL default 001 comment '提案编号',
+  `Tno` INT(8) NOT NULL AUTO_INCREMENT comment '提案编号',
   `Tname` varchar(100) character set utf8 default '空' comment '提案名称',
   `author` varchar(100) character set utf8 default '张三' comment '提案人',
   `date` varchar(100) CHARACTER SET utf8 DEFAULT '20000101' comment '日期',

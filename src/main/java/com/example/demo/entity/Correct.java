@@ -3,12 +3,12 @@ import lombok.Data;
 
 @Data
 public class Correct {
-   public  int Tno=0;
-   public String Tname="0";
-   public String author="0";
-   public String date="0";
-   public String acceptornot="0";
-   public String acceptpeople="0";
-   public String text="0";
-   public String type="0";
+   public  int Tno;
+   public String Tname;
+   public String author;
+   public String date;
+   public String acceptornot;
+   public String acceptpeople;
+   public String text;
+   public String type;
 }

@@ -40,7 +40,11 @@ public class Writer {
         return correctServiceImpl.insert(this.correct);
     }
     public boolean proposalwriting_Guifan(Correct correct){
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String hehe = dateFormat.format( now );
         this.correct=correct;
+        this.correct.date=hehe;
         this.correct.acceptornot="no";
         this.correct.acceptpeople="noone";
         this.user.useornot="yes";

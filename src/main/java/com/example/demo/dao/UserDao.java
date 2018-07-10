@@ -50,10 +50,10 @@ public interface UserDao {
     @Select(value = "SELECT * FROM User WHERE user.`username` = #{username}")
     List<User>search(User user);
 
-    @Insert(value = "INSERT INTO User (user.id ,user.`username`,user.`password`,user.`name`,user.`sex`,user.`dateofbirth`,user.`address`,user.`phoneno`,user.`leader`,user.`community`,user.`company`,user.`identity`,user.`useornot`)VALUES (#{id},#{username},#{password},#{name},#{sex},#{dateofbirth},#{address},#{phoneno},#{leader},#{community},#{company},#{identity},#{useornot})")
+    @Insert(value = "INSERT INTO User (user.id,user.`username`,user.`password`,user.`name`,user.`sex`,user.`dateofbirth`,user.`address`,user.`phoneno`,user.`leader`,user.`community`,user.`company`,user.`identity`,user.`useornot`)VALUES (#{id},#{username},#{password},#{name},#{sex},#{dateofbirth},#{address},#{phoneno},#{leader},#{community},#{company},#{identity},#{useornot})")
     int insert(User user);
 
-    @Update(value = "UPDATE User SET  user.id =#{id},user.`password` = #{password},user.`name` = #{name},user.`sex`=#{sex},user.`dateofbirth` =#{dateofbirth},user.`address`=#{address},user.`phoneno`=#{phoneno},user.`leader`=#{leader},user.`community`=#{community},user.`company`=#{company},user.`identity`=#{identity},user.`useornot`=#{useornot}  WHERE  user.`username`= #{username}")
+    @Update(value = "UPDATE User SET user.`password` = #{password},user.`name` = #{name},user.`sex`=#{sex},user.`dateofbirth` =#{dateofbirth},user.`address`=#{address},user.`phoneno`=#{phoneno},user.`leader`=#{leader},user.`community`=#{community},user.`company`=#{company},user.`identity`=#{identity},user.`useornot`=#{useornot}  WHERE  user.`username`= #{username}")
     int update(User user);
 
     @Delete(value = "DELETE FROM User WHERE username = #{username}")

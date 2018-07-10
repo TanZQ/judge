@@ -74,8 +74,8 @@ public class StudentController {
     public String writerTian(HttpServletRequest request){
         Correct correct=new Correct();
         correct.type="Tian";
-        //List<Correct> list = correctServiceImpl.select(correct);
-        List<Correct> list = correctDao.selectT(correct.type);
+        List<Correct> list = correctServiceImpl.select(correct);
+        //List<Correct> list = correctDao.selectT(correct.type);
         request.setAttribute("students",list);
         return "writerTian";
     }

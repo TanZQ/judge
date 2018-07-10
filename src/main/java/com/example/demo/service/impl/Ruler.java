@@ -7,7 +7,9 @@ import com.example.demo.dao.UserDao;
 import com.example.demo.dao.CorrectDao;
 
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 @Service
 public class Ruler {
@@ -121,28 +123,34 @@ public class Ruler {
         return correctServiceImpl.delete(correct);
     }
     public boolean proposalwriting_Tian(Correct correct){
-        Correct correct1;
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String hehe = dateFormat.format( now );
         List<User> userlist;
         this.user.useornot="yes";
         userlist=userDao.selectUN(this.user.useornot);
+        Correct correct1;
         correct1=correct;
+        correct1.date=hehe;
         correct1.acceptornot="yes";
         correct1.acceptpeople=userlist.get(0).name;
         correct1.type="Tian";
-        correct1.Tno=6;
         correct1.author=userlist.get(0).name;
         return correctServiceImpl.insert(correct1);
     }
     public boolean proposalwriting_Guifan(Correct correct){
-        Correct correct1;
+        Date now = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String hehe = dateFormat.format( now );
         List<User> userlist;
         this.user.useornot="yes";
         userlist=userDao.selectUN(this.user.useornot);
+        Correct correct1;
         correct1=correct;
+        correct1.date=hehe;
         correct1.acceptornot="yes";
         correct1.acceptpeople=userlist.get(0).name;
         correct1.type="Guifan";
-        correct1.Tno=7;
         correct1.author=userlist.get(0).name;
         return correctServiceImpl.insert(correct1);
     }
