@@ -2,6 +2,7 @@ package com.example.demo.entity;
 import lombok.Data;
 @Data
 public class User {
+        public int id=0;
         public String username="0";
         public String password="0";
         public String name="0";

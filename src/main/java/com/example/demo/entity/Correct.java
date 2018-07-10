@@ -3,7 +3,7 @@ import lombok.Data;
 
 @Data
 public class Correct {
-   public  int Tno=001;
+   public  int Tno=0;
    public String Tname="0";
    public String author="0";
    public String date="0";

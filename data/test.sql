@@ -23,6 +23,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 DROP TABLE IF EXISTS `User`;
 
 CREATE TABLE `User`(
+  `id` INT(100)  NOT NULL default 001 comment 'ID',
   `username` varchar(100) character set utf8 default 'admin' comment '用户名',
   `password` varchar(100) character set utf8 default '12345678' comment '密码',
   `name` varchar(100) character set utf8 default '张三' comment '姓名',
@@ -35,13 +36,13 @@ CREATE TABLE `User`(
   `company` varchar(100) default '专委会1' comment '专委会',
   `identity` varchar(100) default 'waiting' comment '权限等级',
   `useornot` varchar(100) default 'no' comment '使用与否',
-  primary key (`username`)
-)engine =InnoDB DEFAULT CHARSET = utf8 comment='用户表';
+  primary key (`id`)
+)engine =InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8 comment='用户表';
 
 
 drop table if exists `Correct`;
 CREATE TABLE `Correct`(
-  `Tno` int(8) NOT NULL default 001 comment '提案编号',
+  `Tno` INT(8) NOT NULL default 001 comment '提案编号',
   `Tname` varchar(100) character set utf8 default '空' comment '提案名称',
   `author` varchar(100) character set utf8 default '张三' comment '提案人',
   `date` varchar(100) CHARACTER SET utf8 DEFAULT '20000101' comment '日期',
@@ -55,7 +56,14 @@ CREATE TABLE `Correct`(
 --  Records of `student`
 -- ----------------------------
 BEGIN;
-INSERT INTO `user` VALUES ('admin', 'admin', '张三', '男','19980711','空','17801127082','空','空','空','manager','no');
+INSERT INTO `user` VALUES ('1','222', 'admin', '张三', '男','19980711','空','17801127082','空','空','空','waiting','no');
+INSERT INTO `user` VALUES ('2','admin', '123', 'lisi', '男','19980711','空','17801127082','空','空','空','manager','yes');
+INSERT INTO `user` VALUES ('3','333', '234', '23444', '男','19980711','空','17801127082','空','空','空','writer','no');
+INSERT INTO `user` VALUES ('4','444', '345', 'hhhh', '男','19980711','空','17801127082','空','空','空','waiting','no');
+INSERT INTO `Correct` VALUES ('001', '提案1', '张三', '2018-3-2','no','空','Tian','空');
+INSERT INTO `Correct` VALUES ('002', '规范1', 'admin', '2018-3-2','yes','空','Guifan','空');
+INSERT INTO `Correct` VALUES ('003', '提案3', 'admin', '2018-3-2','yes','空','Tian','空');
+INSERT INTO `Correct` VALUES ('004', '规范2', 'admin', '2018-3-2','no','空','Guifan','空');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
