@@ -1,8 +1,13 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
+@Service
 public class Logoff {
+    @Autowired
     private UserServiceImpl userServiceImpl=new UserServiceImpl();
     public List<User> list;
     public void logoff(){

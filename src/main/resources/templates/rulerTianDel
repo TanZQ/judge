@@ -61,35 +61,28 @@
          	<div align="center" style="font-size:24px; padding-top:2%; padding-bottom:2%">已通过提案</div>
          	<div style="padding-top:2%">
          		<table class="table table-striped">
-         			<tr>
- 						<td align="center" style="width:20%">提案编号</td>
-         				<td align="center" style="width:20%">提案名称</td>
-         				<td align="center" style="width:20%">提案人</td>
-         				<td align="center" style="width:20%">详细信息</td>
-         				<td align="center">操作</td>
-         			</tr>
-         			<tr>
- 						<td align="center">123</td>
-         				<td align="center">123</td>
-         				<td align="center">123</td>
-         				<td align="center">
- 							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">查看详情</button>
- 						</td>
-         				<td align="center">
- 							<button type="button" class="btn btn-default">删除</button>
- 						</td>
-         			</tr>
-         			<tr>
- 						<td align="center">23</td>
-         				<td align="center">123</td>
-         				<td align="center">123</td>
-         				<td align="center">
- 							<button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">查看详情</button>
- 						</td>
-         				<td align="center">
- 							<button type="button" class="btn btn-default">删除</button>
- 						</td>
-         			</tr>
+         		    <thead>
+                        <tr>
+                            <td align="center" style="width:20%">提案编号</td>
+                            <td align="center" style="width:20%">提案名称</td>
+                            <td align="center" style="width:20%">提案人</td>
+                            <td align="center" style="width:20%">详细信息</td>
+                            <td align="center">操作</td>
+                        </tr>
+         			</thead>
+         			<tbody>
+                        <tr th:each="s,iterStat : ${students}" th:class="${iterStat.odd}? 'odd'">
+                            <td align="center" th:text=" ${s.getTno()}">123</td>
+                            <td align="center" th:text=" ${s.getTname()}">123</td>
+                            <td align="center" th:text=" ${s.getAuthor()}">123</td>
+                            <td align="center">
+                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">查看详情</button>
+                            </td>
+                            <td align="center">
+                                <button type="button" class="btn btn-default">删除</button>
+                            </td>
+                        </tr>
+         			</tbody>
          		</table>
          	</div>
             <div style="padding-bottom:2%; padding-right:2%" align="right">
@@ -109,22 +102,22 @@
         				</div>
         				<div class="modal-body">
                             <div style="padding: 10px 100px 10px;">
-                                <form class="bs-example bs-example-form" role="form">
+                                <form class="bs-example bs-example-form" role="form" action="/stu/rulerTianDel" method="post">
                                     <div class="form-group">
                                         <label for="name">提案名称</label>
-                                        <textarea class="form-control" rows="1"></textarea>
+                                        <textarea class="form-control" rows="1" name="Tname"></textarea>
                                     </div>
                                     <br>
                                     <div class="form-group">
                                         <label for="name">提案内容</label>
-                                        <textarea class="form-control" rows="5"></textarea>
+                                        <textarea class="form-control" rows="5" name="text"></textarea>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-default">提交</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                                     </div>
                                 </form>
                             </div>
-        				</div>
-        				<div class="modal-footer">
-        					<button type="button" class="btn btn-default">提交</button>
-        				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
         				</div>
         			</div><!-- /.modal-content -->
         		</div><!-- /.modal -->
