@@ -54,218 +54,228 @@ public class StudentController {
     private List<User> Writerlist_ruler;
     private List<User> Waitinglist_ruler;
 
-    @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.GET)
-    public String getAllStudent(HttpServletRequest request){
-        User user=new User();
-        user.useornot="yes";
-        if(userServiceImpl.select(user).size()!=0)
+    @RequestMapping(value = "/stu/getAllStudent", method = RequestMethod.GET)
+    public String getAllStudent(HttpServletRequest request) {
+        User user = new User();
+        user.useornot = "yes";
+        if (userServiceImpl.select(user).size() != 0)
             logoff.logoff();
-        Correct correct1=new Correct();
-        correct1.type="Tian";
-        Tianlist_writer=correctDao.selectT(correct1.type);
-        Correct correct2=new Correct();
-        correct2.type="Guifan";
-        Guifanlist_writer=correctDao.selectT(correct2.type);
-        User user1=new User();
-        user1.identity="waiting";
-        Waitinglist_ruler=userDao.selectI(user1.identity);
-        User user2=new User();
-        user2.identity="writer";
-        Writerlist_ruler=userDao.selectI(user2.identity);
+        Correct correct1 = new Correct();
+        correct1.type = "Tian";
+        Tianlist_writer = correctDao.selectT(correct1.type);
+        Correct correct2 = new Correct();
+        correct2.type = "Guifan";
+        Guifanlist_writer = correctDao.selectT(correct2.type);
+        User user1 = new User();
+        user1.identity = "waiting";
+        Waitinglist_ruler = userDao.selectI(user1.identity);
+        User user2 = new User();
+        user2.identity = "writer";
+        Writerlist_ruler = userDao.selectI(user2.identity);
         return "student";
     }
-    @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.POST)
-    public String register(HttpServletRequest request){
-        User user=new User();
-        user.username=request.getParameter("username");
-        user.password=request.getParameter("password");
-        user.name=request.getParameter("name");
-        user.sex=request.getParameter("sex");
-        user.dateofbirth=request.getParameter("dateofbirth");
-        user.phoneno=request.getParameter("phoneno");
-        user.address=request.getParameter("address");
-        user.leader=request.getParameter("leader");
-        user.community=request.getParameter("community");
-        user.company=request.getParameter("company");
+
+    @RequestMapping(value = "/stu/getAllStudent", method = RequestMethod.POST)
+    public String register(HttpServletRequest request) {
+        User user = new User();
+        user.username = request.getParameter("username");
+        user.password = request.getParameter("password");
+        user.name = request.getParameter("name");
+        user.sex = request.getParameter("sex");
+        user.dateofbirth = request.getParameter("dateofbirth");
+        user.phoneno = request.getParameter("phoneno");
+        user.address = request.getParameter("address");
+        user.leader = request.getParameter("leader");
+        user.community = request.getParameter("community");
+        user.company = request.getParameter("company");
         regist.regist(user);
         return "student";
     }
-   /* @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.POST)
-    public String login(HttpServletRequest request){
-        User user=new User();
-        user.username=request.getParameter("uname");
-        user.password=request.getParameter("password");
-        judge=login.login(user);
-        return "stu/judge";
-    }*/
-    @RequestMapping(value = "/stu/login",method = RequestMethod.GET)
-    public String loginRuler(HttpServletRequest request){
+
+    /* @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.POST)
+     public String login(HttpServletRequest request){
+         User user=new User();
+         user.username=request.getParameter("uname");
+         user.password=request.getParameter("password");
+         judge=login.login(user);
+         return "stu/judge";
+     }*/
+    @RequestMapping(value = "/stu/login", method = RequestMethod.GET)
+    public String loginRuler(HttpServletRequest request) {
         return "login";
     }
-    @RequestMapping(value = "/stu/login",method = RequestMethod.POST)
-    public String loginRuler_post(HttpServletRequest request){
-        User user=new User();
-        user.username=request.getParameter("username");
-        user.password=request.getParameter("userpassword");
-        String identity=login.login(user);
+
+    @RequestMapping(value = "/stu/login", method = RequestMethod.POST)
+    public String loginRuler_post(HttpServletRequest request) {
+        User user = new User();
+        user.username = request.getParameter("username");
+        user.password = request.getParameter("userpassword");
+        String identity = login.login(user);
         login.recordusinguser();
-        if(identity.equals("writer"))
+        if (identity.equals("writer"))
             return "redirect:/stu/writerTian";
-        else if(identity.equals("manager"))
+        else if (identity.equals("manager"))
             return "redirect:/stu/rulerIDManage";
 
         return "login";
     }
-    @RequestMapping(value = "/stu/writerTian",method = RequestMethod.GET)
-    public String writerTian(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/writerTian", method = RequestMethod.GET)
+    public String writerTian(HttpServletRequest request) {
         //Correct correct=new Correct();
         //correct.type="Tian";
         //List<Correct> list = correctServiceImpl.select(correct);
         //Tianlist_writer = correctDao.selectT(correct.type);
-        request.setAttribute("students",Tianlist_writer);
+        request.setAttribute("students", Tianlist_writer);
         return "writerTian";
     }
-    @RequestMapping(value = "/stu/writerTian",method = RequestMethod.POST)
+
+    @RequestMapping(value = "/stu/writerTian", method = RequestMethod.POST)
     public String addTian(HttpServletRequest request) {
         Correct correct2 = new Correct();
-        correct2.type="Tian";
-        List<Correct> list=new ArrayList<Correct>();
-        List<Correct> list2=new ArrayList<Correct>();
-        String condition=request.getParameter("condition");
-        if(request.getParameter("keyword").equals("")) {
+        correct2.type = "Tian";
+        List<Correct> list = new ArrayList<Correct>();
+        List<Correct> list2 = new ArrayList<Correct>();
+        String condition = request.getParameter("condition");
+        if (request.getParameter("keyword").equals("")) {
             Tianlist_writer = correctDao.selectT(correct2.type);
             return "redirect:/stu/writerTian";
-        }
-        else {
+        } else {
             if (condition.equals("Tno")) {
                 correct2.Tno = Integer.valueOf(request.getParameter("keyword"));
-                list=correctDao.selectNO(correct2.Tno);
-            }
-            else if (condition.equals("Tname")) {
+                list = correctDao.selectNO(correct2.Tno);
+            } else if (condition.equals("Tname")) {
                 correct2.Tname = request.getParameter("keyword");
-                list=correctDao.selectNA(correct2.Tname);
-            }
-            else if (condition.equals("author")) {
+                list = correctDao.selectNA(correct2.Tname);
+            } else if (condition.equals("author")) {
                 correct2.author = request.getParameter("keyword");
-                list=correctDao.selectA(correct2.author);
+                list = correctDao.selectA(correct2.author);
             }
         }
-        for(int i=0;i<list.size();i++){
-            if(list.get(i).type.equals("Tian"))
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).type.equals("Tian"))
                 list2.add(list.get(i));
         }
-        Tianlist_writer=list2;
+        Tianlist_writer = list2;
         return "redirect:/stu/writerTian";
     }
-    @RequestMapping(value = "/stu/writerTianAdd",method = RequestMethod.GET)
-    public String writerTianAdd(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/writerTianAdd", method = RequestMethod.GET)
+    public String writerTianAdd(HttpServletRequest request) {
         return "writerTianAdd";
     }
-    @RequestMapping(value = "/stu/writerTianAdd",method = RequestMethod.POST)
-    public String writerTianAdd_post(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/writerTianAdd", method = RequestMethod.POST)
+    public String writerTianAdd_post(HttpServletRequest request) {
         Correct correct = new Correct();
         Correct correct0 = new Correct();
         correct.Tname = request.getParameter("Tname");
         correct.text = request.getParameter("text");
         writer.proposalwriting_Tian(correct);
-        Tianlist_writer=correctDao.selectT(correct.type);
+        Tianlist_writer = correctDao.selectT(correct.type);
         return "redirect:/stu/writerTian";
     }
-    @RequestMapping(value = "/stu/writerTian/Info/{id}",method = RequestMethod.GET)
-    public String writerTianInfo(HttpServletRequest request, @PathVariable("id")int id){
+
+    @RequestMapping(value = "/stu/writerTian/Info/{id}", method = RequestMethod.GET)
+    public String writerTianInfo(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
         List<Correct> list = new ArrayList<Correct>();
-        correct.Tno=id;
-        list=correctServiceImpl.select(correct);
-        request.setAttribute("students",list);
+        correct.Tno = id;
+        list = correctServiceImpl.select(correct);
+        request.setAttribute("students", list);
         return "writerTianInfo";
     }
-    @RequestMapping(value = "/stu/writerGuifan/Info/{id}",method = RequestMethod.GET)
-    public String writerGuifanInfo(HttpServletRequest request, @PathVariable("id")int id){
+
+    @RequestMapping(value = "/stu/writerGuifan/Info/{id}", method = RequestMethod.GET)
+    public String writerGuifanInfo(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
         List<Correct> list = new ArrayList<Correct>();
-        correct.Tno=id;
-        list=correctServiceImpl.select(correct);
-        request.setAttribute("students",list);
+        correct.Tno = id;
+        list = correctServiceImpl.select(correct);
+        request.setAttribute("students", list);
         return "writerGuifanInfo";
     }
-    @RequestMapping(value = "/stu/writerTianChange/Delete/{id}",method = RequestMethod.GET)
-    public String writerTianDelete(HttpServletRequest request, @PathVariable("id")int id){
+
+    @RequestMapping(value = "/stu/writerTianChange/Delete/{id}", method = RequestMethod.GET)
+    public String writerTianDelete(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
         //List<Correct> list = new ArrayList<Correct>();
-        correct.Tno=id;
+        correct.Tno = id;
         correctServiceImpl.delete(correct);
-        Correct correct1=new Correct();
-        correct1.type="Tian";
-        Tianlist_writer=correctDao.selectT(correct1.type);
+        Correct correct1 = new Correct();
+        correct1.type = "Tian";
+        Tianlist_writer = correctDao.selectT(correct1.type);
         return "redirect:/stu/writerTianChange";
     }
-    @RequestMapping(value = "/stu/writerGuifan",method = RequestMethod.GET)
-    public String writerGuifan(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/writerGuifan", method = RequestMethod.GET)
+    public String writerGuifan(HttpServletRequest request) {
         //Correct correct=new Correct();
         //correct.type="Tian";
         //List<Correct> list = correctServiceImpl.select(correct);
         //Tianlist_writer = correctDao.selectT(correct.type);
-        request.setAttribute("students",Guifanlist_writer);
-            return "writerGuifan";
+        request.setAttribute("students", Guifanlist_writer);
+        return "writerGuifan";
     }
-    @RequestMapping(value = "/stu/writerGuifan",method = RequestMethod.POST)
+
+    @RequestMapping(value = "/stu/writerGuifan", method = RequestMethod.POST)
     public String addGuifan(HttpServletRequest request) {
         Correct correct2 = new Correct();
-        correct2.type="Guifan";
-        List<Correct> list=new ArrayList<Correct>();
-        List<Correct> list2=new ArrayList<Correct>();
-        String condition=request.getParameter("condition");
-        if(request.getParameter("keyword").equals("")) {
+        correct2.type = "Guifan";
+        List<Correct> list = new ArrayList<Correct>();
+        List<Correct> list2 = new ArrayList<Correct>();
+        String condition = request.getParameter("condition");
+        if (request.getParameter("keyword").equals("")) {
             Guifanlist_writer = correctDao.selectT(correct2.type);
             return "redirect:/stu/writerGuifan";
-        }
-        else {
+        } else {
             if (condition.equals("Tno")) {
                 correct2.Tno = Integer.valueOf(request.getParameter("keyword"));
-                list=correctDao.selectNO(correct2.Tno);
-            }
-            else if (condition.equals("Tname")) {
+                list = correctDao.selectNO(correct2.Tno);
+            } else if (condition.equals("Tname")) {
                 correct2.Tname = request.getParameter("keyword");
-                list=correctDao.selectNA(correct2.Tname);
-            }
-            else if (condition.equals("author")) {
+                list = correctDao.selectNA(correct2.Tname);
+            } else if (condition.equals("author")) {
                 correct2.author = request.getParameter("keyword");
-                list=correctDao.selectA(correct2.author);
+                list = correctDao.selectA(correct2.author);
             }
         }
-        for(int i=0;i<list.size();i++){
-            if(list.get(i).type.equals("Guifan"))
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).type.equals("Guifan"))
                 list2.add(list.get(i));
         }
-        Guifanlist_writer=list2;
+        Guifanlist_writer = list2;
         return "redirect:/stu/writerGuifan";
     }
-    @RequestMapping(value = "/stu/writerGuifanAdd",method = RequestMethod.GET)
-    public String writerGuifanAdd(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/writerGuifanAdd", method = RequestMethod.GET)
+    public String writerGuifanAdd(HttpServletRequest request) {
         return "writerGuifanAdd";
     }
-    @RequestMapping(value = "/stu/writerGuifanAdd",method = RequestMethod.POST)
-    public String writerGuifanAdd_post(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/writerGuifanAdd", method = RequestMethod.POST)
+    public String writerGuifanAdd_post(HttpServletRequest request) {
         Correct correct = new Correct();
         Correct correct0 = new Correct();
         correct.Tname = request.getParameter("Tname");
         correct.text = request.getParameter("text");
         writer.proposalwriting_Guifan(correct);
-        Guifanlist_writer=correctDao.selectT(correct.type);
+        Guifanlist_writer = correctDao.selectT(correct.type);
         return "redirect:/stu/writerGuifan";
     }
-    @RequestMapping(value = "/stu/writerGuifanChange/Delete/{id}",method = RequestMethod.GET)
-    public String writerGuifanDelete(HttpServletRequest request, @PathVariable("id")int id){
+
+    @RequestMapping(value = "/stu/writerGuifanChange/Delete/{id}", method = RequestMethod.GET)
+    public String writerGuifanDelete(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
         //List<Correct> list = new ArrayList<Correct>();
-        correct.Tno=id;
+        correct.Tno = id;
         correctServiceImpl.delete(correct);
-        Correct correct1=new Correct();
-        correct1.type="Guifan";
-        Guifanlist_writer=correctDao.selectT(correct1.type);
+        Correct correct1 = new Correct();
+        correct1.type = "Guifan";
+        Guifanlist_writer = correctDao.selectT(correct1.type);
         return "redirect:/stu/writerGuifanChange";
     }
+
     /*
     @RequestMapping(value = "/stu/writerGuifan",method = RequestMethod.GET)
     public String writerGuifan(HttpServletRequest request){
@@ -283,81 +293,113 @@ public class StudentController {
         writer.proposalwriting_Guifan(correct);
         return "redirect:/stu/writerGuifan";
     }*/
-    @RequestMapping(value = "/stu/writerTianChange",method = RequestMethod.GET)
-    public String writerTianChange(HttpServletRequest request){
+    @RequestMapping(value = "/stu/writerTianChange", method = RequestMethod.GET)
+    public String writerTianChange(HttpServletRequest request) {
         List<Correct> list = writer.showyourTian();
-        request.setAttribute("students",list);
+        request.setAttribute("students", list);
         return "writerTianChange";
 
     }
-    @RequestMapping(value = "/stu/writerGuifanChange",method = RequestMethod.GET)
-    public String writerGuifanChange(HttpServletRequest request){ ;
+
+    @RequestMapping(value = "/stu/writerGuifanChange", method = RequestMethod.GET)
+    public String writerGuifanChange(HttpServletRequest request) {
+        ;
         List<Correct> list = writer.showyourGuifan();
-        request.setAttribute("students",list);
+        request.setAttribute("students", list);
         return "writerGuifanChange";
 
     }
-    @RequestMapping(value = "/stu/writerInfoChange",method = RequestMethod.GET)
-    public String writerInfoChange(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/writerInfoChange", method = RequestMethod.GET)
+    public String writerInfoChange(HttpServletRequest request) {
         return "writerInfoChange";
 
     }
-    @RequestMapping(value = "/stu/rulerIDManage",method = RequestMethod.GET)
-    public String rulerIDManage(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/rulerIDManage", method = RequestMethod.GET)
+    public String rulerIDManage(HttpServletRequest request) {
         //User user = new User();
         //user.identity="waiting";
         //List<Correct> list = correctServiceImpl.select(correct);
         //List<User> list = userDao.selectI(user.identity);
-        request.setAttribute("students",Waitinglist_ruler);
+        request.setAttribute("students", Waitinglist_ruler);
         return "rulerIDManage";
     }
-    @RequestMapping(value = "/stu/rulerIDManage",method = RequestMethod.POST)
-    public String rulerIDManage_search(HttpServletRequest request){
-        User user=new User();
-        List<User> list1=new ArrayList<User>();
-        List<User> list2=new ArrayList<User>();
-        user.identity="waiting";
-        if(request.getParameter("keyword").equals("")){
-            Waitinglist_ruler=userDao.selectI(user.identity);
+
+    @RequestMapping(value = "/stu/rulerIDManage", method = RequestMethod.POST)
+    public String rulerIDManage_search(HttpServletRequest request) {
+        User user = new User();
+        List<User> list1 = new ArrayList<User>();
+        List<User> list2 = new ArrayList<User>();
+        user.identity = "waiting";
+        if (request.getParameter("keyword").equals("")) {
+            Waitinglist_ruler = userDao.selectI(user.identity);
             return "redirect:/stu/rulerIDManage";
         }
-        user.name=request.getParameter("keyword");
-        list1=userDao.selectN(user.name);
-        for(int i=0;i<list1.size();i++){
-            if(list1.get(i).identity.equals("waiting"))
+        user.name = request.getParameter("keyword");
+        list1 = userDao.selectN(user.name);
+        for (int i = 0; i < list1.size(); i++) {
+            if (list1.get(i).identity.equals("waiting"))
                 list2.add(list1.get(i));
         }
-        Waitinglist_ruler=list2;
+        Waitinglist_ruler = list2;
         return "redirect:/stu/rulerIDManage";
     }
-    @RequestMapping(value = "/stu/rulerIDUpAndDel",method = RequestMethod.GET)
-    public String rulerIDUpAndDel(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/rulerIDManage/Delete/{id}", method = RequestMethod.GET)
+    public String rulerIDDelete(HttpServletRequest request, @PathVariable("id") String id) {
+        User user = new User();
+        //List<Correct> list = new ArrayList<Correct>();
+        user.username = id;
+        userServiceImpl.delete(user);
+        User user1 = new User();
+        user1.identity = "waiting";
+        Waitinglist_ruler = userDao.selectI(user1.identity);
+        return "redirect:/stu/rulerIDManage";
+    }
+
+    @RequestMapping(value = "/stu/rulerIDUpAndDel", method = RequestMethod.GET)
+    public String rulerIDUpAndDel(HttpServletRequest request) {
         //User user = new User();
         //user.identity="writer";
         //List<Correct> list = correctServiceImpl.select(correct);
         //List<User> list = userDao.selectI(user.identity);
-        request.setAttribute("students",Writerlist_ruler);
+        request.setAttribute("students", Writerlist_ruler);
         return "rulerIDUpAndDel";
     }
-    @RequestMapping(value = "/stu/rulerIDUpAndDel",method = RequestMethod.POST)
-    public String rulerIDUpAndDel_search(HttpServletRequest request){
-        User user=new User();
-        List<User> list1=new ArrayList<User>();
-        List<User> list2=new ArrayList<User>();
-        user.identity="writer";
-        if(request.getParameter("keyword").equals("")){
-            Writerlist_ruler=userDao.selectI(user.identity);
+
+    @RequestMapping(value = "/stu/rulerIDUpAndDel", method = RequestMethod.POST)
+    public String rulerIDUpAndDel_search(HttpServletRequest request) {
+        User user = new User();
+        List<User> list1 = new ArrayList<User>();
+        List<User> list2 = new ArrayList<User>();
+        user.identity = "writer";
+        if (request.getParameter("keyword").equals("")) {
+            Writerlist_ruler = userDao.selectI(user.identity);
             return "redirect:/stu/rulerIDUpAndDel";
         }
-        user.name=request.getParameter("keyword");
-        list1=userDao.selectN(user.name);
-        for(int i=0;i<list1.size();i++){
-            if(list1.get(i).identity.equals("writer"))
+        user.name = request.getParameter("keyword");
+        list1 = userDao.selectN(user.name);
+        for (int i = 0; i < list1.size(); i++) {
+            if (list1.get(i).identity.equals("writer"))
                 list2.add(list1.get(i));
         }
-        Writerlist_ruler=list2;
+        Writerlist_ruler = list2;
         return "redirect:/stu/rulerIDUpAndDel";
     }
+
+    @RequestMapping(value = "/stu/rulerIDUpAndDel/Delete/{id}", method = RequestMethod.GET)
+    public String rulerIDUpAndDelete(HttpServletRequest request, @PathVariable("id") String id) {
+        User user = new User();
+        //List<Correct> list = new ArrayList<Correct>();
+        user.username = id;
+        userServiceImpl.delete(user);
+        User user1 = new User();
+        user1.identity = "writer";
+        Writerlist_ruler = userDao.selectI(user1.identity);
+        return "redirect:/stu/rulerIDUpAndDel";
+    }
+
     /*@RequestMapping(value = "/stu/judge",method = RequestMethod.GET)
     public String judge(HttpServletRequest request){
         if(judge.equals("writer"))
@@ -367,48 +409,101 @@ public class StudentController {
         else
             return "student";
     }*/
-    @RequestMapping(value = "/stu/rulerTianManage",method = RequestMethod.GET)
-    public String rulerTianManage(HttpServletRequest request){
+    @RequestMapping(value = "/stu/rulerTianManage", method = RequestMethod.GET)
+    public String rulerTianManage(HttpServletRequest request) {
         List<Correct> list = ruler.proposalmanagement_tian_no();
-        request.setAttribute("students",list);
+        request.setAttribute("students", list);
         return "rulerTianManage";
 
     }
-    @RequestMapping(value = "/stu/rulerTianDel",method = RequestMethod.GET)
-    public String rulerTianDel(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/rulerTianManage/Delete/{id}", method = RequestMethod.GET)
+    public String rulerTianManageDelete(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        //List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        correctServiceImpl.delete(correct);
+        Correct correct1 = new Correct();
+        correct1.type = "Tian";
+        Tianlist_writer = correctDao.selectT(correct1.type);
+        return "redirect:/stu/rulerTianManage";
+    }
+
+    @RequestMapping(value = "/stu/rulerTianDel", method = RequestMethod.GET)
+    public String rulerTianDel(HttpServletRequest request) {
         List<Correct> list = ruler.proposalmanagement_tian_yes();
-        request.setAttribute("students",list);
+        request.setAttribute("students", list);
         return "rulerTianDel";
 
     }
-    @RequestMapping(value = "/stu/rulerTianDel",method = RequestMethod.POST)
-    public String rulerAddTian(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/rulerTianDel/Delete/{id}", method = RequestMethod.GET)
+    public String rulerTianDelDelete(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
-        correct.Tname=request.getParameter("Tname");
-        correct.text=request.getParameter("text");
+        //List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        correctServiceImpl.delete(correct);
+        Correct correct1 = new Correct();
+        correct1.type = "Tian";
+        Tianlist_writer = correctDao.selectT(correct1.type);
+        return "redirect:/stu/rulerTianDel";
+    }
+
+    @RequestMapping(value = "/stu/rulerTianDel", method = RequestMethod.POST)
+    public String rulerAddTian(HttpServletRequest request) {
+        Correct correct = new Correct();
+        correct.Tname = request.getParameter("Tname");
+        correct.text = request.getParameter("text");
         ruler.proposalwriting_Tian(correct);
         return "redirect:/stu/rulerTianDel";
     }
-    @RequestMapping(value = "/stu/rulerGuifanManage",method = RequestMethod.GET)
-    public String rulerGuifanManage(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/rulerGuifanManage", method = RequestMethod.GET)
+    public String rulerGuifanManage(HttpServletRequest request) {
         List<Correct> list = ruler.proposalmanagement_guifan_no();
-        request.setAttribute("students",list);
+        request.setAttribute("students", list);
         return "rulerGuifanManage";
 
     }
-    @RequestMapping(value = "/stu/rulerGuifanDel",method = RequestMethod.GET)
-    public String rulerGuifanDel(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/rulerGuifanManage/Delete/{id}", method = RequestMethod.GET)
+    public String rulerGuifanManageDelete(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        //List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        correctServiceImpl.delete(correct);
+        Correct correct1 = new Correct();
+        correct1.type = "Guifan";
+        Guifanlist_writer = correctDao.selectT(correct1.type);
+        return "redirect:/stu/rulerGuifanManage";
+    }
+
+    @RequestMapping(value = "/stu/rulerGuifanDel", method = RequestMethod.GET)
+    public String rulerGuifanDel(HttpServletRequest request) {
         List<Correct> list = ruler.proposalmanagement_guifan_yes();
-        request.setAttribute("students",list);
+        request.setAttribute("students", list);
         return "rulerGuifanDel";
 
     }
-    @RequestMapping(value = "/stu/rulerGuifanDel",method = RequestMethod.POST)
-    public String rulerAddGuifan(HttpServletRequest request){
+
+    @RequestMapping(value = "/stu/rulerGuifanDel", method = RequestMethod.POST)
+    public String rulerAddGuifan(HttpServletRequest request) {
         Correct correct = new Correct();
-        correct.Tname=request.getParameter("Tname");
-        correct.text=request.getParameter("text");
+        correct.Tname = request.getParameter("Tname");
+        correct.text = request.getParameter("text");
         ruler.proposalwriting_Guifan(correct);
+        return "redirect:/stu/rulerGuifanDel";
+    }
+
+    @RequestMapping(value = "/stu/rulerGuifanDel/Delete/{id}", method = RequestMethod.GET)
+    public String rulerGuifanDelDelete(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        //List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        correctServiceImpl.delete(correct);
+        Correct correct1 = new Correct();
+        correct1.type = "Guifan";
+        Guifanlist_writer = correctDao.selectT(correct1.type);
         return "redirect:/stu/rulerGuifanDel";
     }
 }

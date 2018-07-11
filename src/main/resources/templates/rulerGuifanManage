@@ -80,7 +80,9 @@
                             </td>
                             <td align="center">
                                 <button type="button" class="btn btn-default">同意</button>
-                                <button type="button" class="btn btn-default">拒绝</button>
+                                <a th:href="@{/stu/rulerGuifanManage/Delete/{id}(id=${s.getTno()})}">
+                                    <button type="button" class="btn btn-default">拒绝</button>
+                                </a>
                             </td>
                         </tr>
          			</tbody>

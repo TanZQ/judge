@@ -79,7 +79,9 @@
                                 <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">查看详情</button>
                             </td>
                             <td align="center">
-                                <button type="button" class="btn btn-default">删除</button>
+                                <a th:href="@{/stu/rulerTianDel/Delete/{id}(id=${s.getTno()})}">
+                                    <button type="button" class="btn btn-default">删除</button>
+                                </a>
                             </td>
                         </tr>
          			</tbody>
