@@ -71,7 +71,6 @@ public class StudentController {
         User user2=new User();
         user2.identity="writer";
         Writerlist_ruler=userDao.selectI(user2.identity);
-        System.out.println(Writerlist_ruler.size());
         return "student";
     }
     @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.POST)
@@ -107,8 +106,6 @@ public class StudentController {
         User user=new User();
         user.username=request.getParameter("username");
         user.password=request.getParameter("userpassword");
-        System.out.println(user.username);
-        System.out.println(user.password);
         String identity=login.login(user);
         login.recordusinguser();
         if(identity.equals("writer"))
@@ -314,7 +311,6 @@ public class StudentController {
             return "redirect:/stu/rulerIDUpAndDel";
         }
         user.name=request.getParameter("keyword");
-        System.out.println(user.name);
         list1=userDao.selectN(user.name);
         for(int i=0;i<list1.size();i++){
             if(list1.get(i).identity.equals("writer"))
