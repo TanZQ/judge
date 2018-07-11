@@ -14,6 +14,7 @@ import com.example.demo.service.impl.CorrectServiceImpl;
 import com.example.demo.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -170,6 +171,35 @@ public class StudentController {
         Tianlist_writer=correctDao.selectT(correct.type);
         return "redirect:/stu/writerTian";
     }
+    @RequestMapping(value = "/stu/writerTian/Info/{id}",method = RequestMethod.GET)
+    public String writerTianInfo(HttpServletRequest request, @PathVariable("id")int id){
+        Correct correct = new Correct();
+        List<Correct> list = new ArrayList<Correct>();
+        correct.Tno=id;
+        list=correctServiceImpl.select(correct);
+        request.setAttribute("students",list);
+        return "writerTianInfo";
+    }
+    @RequestMapping(value = "/stu/writerGuifan/Info/{id}",method = RequestMethod.GET)
+    public String writerGuifanInfo(HttpServletRequest request, @PathVariable("id")int id){
+        Correct correct = new Correct();
+        List<Correct> list = new ArrayList<Correct>();
+        correct.Tno=id;
+        list=correctServiceImpl.select(correct);
+        request.setAttribute("students",list);
+        return "writerGuifanInfo";
+    }
+    @RequestMapping(value = "/stu/writerTianChange/Delete/{id}",method = RequestMethod.GET)
+    public String writerTianDelete(HttpServletRequest request, @PathVariable("id")int id){
+        Correct correct = new Correct();
+        //List<Correct> list = new ArrayList<Correct>();
+        correct.Tno=id;
+        correctServiceImpl.delete(correct);
+        Correct correct1=new Correct();
+        correct1.type="Tian";
+        Tianlist_writer=correctDao.selectT(correct1.type);
+        return "redirect:/stu/writerTianChange";
+    }
     @RequestMapping(value = "/stu/writerGuifan",method = RequestMethod.GET)
     public String writerGuifan(HttpServletRequest request){
         //Correct correct=new Correct();
@@ -225,6 +255,17 @@ public class StudentController {
         Guifanlist_writer=correctDao.selectT(correct.type);
         return "redirect:/stu/writerGuifan";
     }
+    @RequestMapping(value = "/stu/writerGuifanChange/Delete/{id}",method = RequestMethod.GET)
+    public String writerGuifanDelete(HttpServletRequest request, @PathVariable("id")int id){
+        Correct correct = new Correct();
+        //List<Correct> list = new ArrayList<Correct>();
+        correct.Tno=id;
+        correctServiceImpl.delete(correct);
+        Correct correct1=new Correct();
+        correct1.type="Guifan";
+        Guifanlist_writer=correctDao.selectT(correct1.type);
+        return "redirect:/stu/writerGuifanChange";
+    }
     /*
     @RequestMapping(value = "/stu/writerGuifan",method = RequestMethod.GET)
     public String writerGuifan(HttpServletRequest request){
@@ -250,10 +291,8 @@ public class StudentController {
 
     }
     @RequestMapping(value = "/stu/writerGuifanChange",method = RequestMethod.GET)
-    public String writerGuifanChange(HttpServletRequest request){
-        Correct correct=new Correct();
-        correct.author="Guifan";
-        List<Correct> list = correctServiceImpl.select(correct);
+    public String writerGuifanChange(HttpServletRequest request){ ;
+        List<Correct> list = writer.showyourGuifan();
         request.setAttribute("students",list);
         return "writerGuifanChange";
 
