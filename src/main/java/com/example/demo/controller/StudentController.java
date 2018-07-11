@@ -60,18 +60,6 @@ public class StudentController {
         user.useornot = "yes";
         if (userServiceImpl.select(user).size() != 0)
             logoff.logoff();
-        Correct correct1 = new Correct();
-        correct1.type = "Tian";
-        Tianlist_writer = correctDao.selectT(correct1.type);
-        Correct correct2 = new Correct();
-        correct2.type = "Guifan";
-        Guifanlist_writer = correctDao.selectT(correct2.type);
-        User user1 = new User();
-        user1.identity = "waiting";
-        Waitinglist_ruler = userDao.selectI(user1.identity);
-        User user2 = new User();
-        user2.identity = "writer";
-        Writerlist_ruler = userDao.selectI(user2.identity);
         return "student";
     }
 
@@ -107,6 +95,18 @@ public class StudentController {
 
     @RequestMapping(value = "/stu/login", method = RequestMethod.POST)
     public String loginRuler_post(HttpServletRequest request) {
+        Correct correct1 = new Correct();
+        correct1.type = "Tian";
+        Tianlist_writer = correctDao.selectT(correct1.type);
+        Correct correct2 = new Correct();
+        correct2.type = "Guifan";
+        Guifanlist_writer = correctDao.selectT(correct2.type);
+        User user1 = new User();
+        user1.identity = "waiting";
+        Waitinglist_ruler = userDao.selectI(user1.identity);
+        User user2 = new User();
+        user2.identity = "writer";
+        Writerlist_ruler = userDao.selectI(user2.identity);
         User user = new User();
         user.username = request.getParameter("username");
         user.password = request.getParameter("userpassword");
@@ -116,7 +116,6 @@ public class StudentController {
             return "redirect:/stu/writerTian";
         else if (identity.equals("manager"))
             return "redirect:/stu/rulerIDManage";
-
         return "login";
     }
 
