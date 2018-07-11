@@ -40,7 +40,6 @@ public class StudentController {
     private Login login;
     @Autowired
     private UserDao userDao;
-    private String judge;
 
     @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.GET)
     public String getAllStudent(HttpServletRequest request){
@@ -62,14 +61,6 @@ public class StudentController {
         regist.regist(user);
         return "student";
     }
-   /* @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.POST)
-    public String login(HttpServletRequest request){
-        User user=new User();
-        user.username=request.getParameter("uname");
-        user.password=request.getParameter("password");
-        judge=login.login(user);
-        return "stu/judge";
-    }*/
     @RequestMapping(value = "/stu/writerTian",method = RequestMethod.GET)
     public String writerTian(HttpServletRequest request){
         Correct correct=new Correct();
@@ -144,15 +135,6 @@ public class StudentController {
         return "rulerIDUpAndDel";
 
     }
-    /*@RequestMapping(value = "/stu/judge",method = RequestMethod.GET)
-    public String judge(HttpServletRequest request){
-        if(judge.equals("writer"))
-            return "writerTian";
-        else if(judge.equals("manager"))
-            return "rulerTianManage";
-        else
-            return "student";
-    }*/
     @RequestMapping(value = "/stu/rulerTianManage",method = RequestMethod.GET)
     public String rulerTianManage(HttpServletRequest request){
         List<Correct> list = ruler.proposalmanagement_tian_no();
