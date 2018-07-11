@@ -92,7 +92,9 @@
                                 </a>
                             </td>
                             <td align="center">
-                                <button type="button" class="btn btn-default">同意</button>
+                                <a th:href="@{/stu/rulerIDManage/Update/{id}(id=${s.getUsername()})}">
+                                    <button type="button" class="btn btn-default">同意</button>
+                                </a>
                                 <a th:href="@{/stu/rulerIDManage/Delete/{id}(id=${s.getUsername()})}">
                                     <button type="button" class="btn btn-default">拒绝</button>
                                 </a>

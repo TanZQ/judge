@@ -1,11 +1,12 @@
 package com.example.demo.controller;
-
+import com.example.demo.service.impl.SuggestServiceImpl;
 import com.example.demo.service.impl.Ruler;
 import com.example.demo.service.impl.Writer;
 import com.example.demo.service.impl.Regist;
 import com.example.demo.service.impl.Login;
 import com.example.demo.service.impl.Logoff;
 import com.example.demo.entity.Correct;
+import com.example.demo.entity.Suggest;
 import com.example.demo.dao.CorrectDao;
 import com.example.demo.dao.UserDao;
 import com.example.demo.entity.User;
@@ -35,6 +36,8 @@ public class StudentController {
     @Autowired
     private UserServiceImpl userServiceImpl;
     @Autowired
+    private SuggestServiceImpl suggestServiceImpl;
+    @Autowired
     private Writer writer;
     @Autowired
     private Ruler ruler;
@@ -62,7 +65,41 @@ public class StudentController {
             logoff.logoff();
         return "student";
     }
-
+    @RequestMapping(value = "/stu/writerSuggest", method = RequestMethod.GET)
+    public String writerSuggest(HttpServletRequest request) {
+        User user = new User();
+        List<User> list = new ArrayList<User>();
+        user.identity = "waiting";
+        list = userDao.selectI(user.identity);
+        request.setAttribute("students", list);
+        return "writerSuggest";
+    }
+    @RequestMapping(value = "/stu/writerSuggest/Info/{id}", method = RequestMethod.GET)
+    public String writerSuggestInfo(HttpServletRequest request, @PathVariable("id") String id) {
+        User user=new User();
+        List<User> list = new ArrayList<User>();
+        user.username = id;
+        list = userServiceImpl.select(user);
+        request.setAttribute("students", list);
+        return "writerSuggestInfo";
+    }
+    @RequestMapping(value = "/stu/writerSuggest/suggest/{id}", method = RequestMethod.GET)
+    public String writerSuggestSuggest(HttpServletRequest request, @PathVariable("id") String id) {
+        return "writerSuggestSuggest";
+    }
+    @RequestMapping(value = "/stu/writerSuggest/suggest/{id}", method = RequestMethod.POST)
+    public String writerSuggestSuggest_post(HttpServletRequest request, @PathVariable("id") String id) {
+        User user=new User();
+        List<User> list=new ArrayList<User>();
+        Suggest suggest=new Suggest();
+        user.useornot="yes";
+        list=userServiceImpl.select(user);
+        suggest.suggestpeople=list.get(0).name;
+        suggest.besuggested=id;
+        suggest.reason=request.getParameter("text");
+        suggestServiceImpl.insert(suggest);
+        return "redirect:/stu/writerSuggest";
+    }
     @RequestMapping(value = "/stu/getAllStudent", method = RequestMethod.POST)
     public String register(HttpServletRequest request) {
         User user = new User();
@@ -174,7 +211,27 @@ public class StudentController {
         Tianlist_writer = correctDao.selectT(correct.type);
         return "redirect:/stu/writerTian";
     }
+    @RequestMapping(value = "/stu/writerTianChange/Update/{id}", method = RequestMethod.GET)
+    public String writerTianUpdate(HttpServletRequest request, @PathVariable("id") int id) {
+        return "writerTianUpdate";
 
+    }
+    @RequestMapping(value = "/stu/writerTianChange/Update/{id}", method = RequestMethod.POST)
+    public String writerTianUpdate_post(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct=new Correct();
+        List<Correct> list=new ArrayList<Correct>();
+        correct.Tno=id;
+        list=correctServiceImpl.select(correct);
+        correct=list.get(0);
+        correct.Tname=request.getParameter("Tname");
+        correct.text=request.getParameter("text");
+        correctServiceImpl.update(correct);
+        Correct correct1 = new Correct();
+        correct1.type = "Tian";
+        Tianlist_writer = correctDao.selectT(correct1.type);
+        return "redirect:/stu/writerTianChange";
+
+    }
     @RequestMapping(value = "/stu/writerTian/Info/{id}", method = RequestMethod.GET)
     public String writerTianInfo(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
@@ -194,7 +251,27 @@ public class StudentController {
         request.setAttribute("students", list);
         return "writerGuifanInfo";
     }
+    @RequestMapping(value = "/stu/writerGuifanChange/Update/{id}", method = RequestMethod.GET)
+    public String writerGuifanUpdate(HttpServletRequest request, @PathVariable("id") int id) {
+        return "writerGuifanUpdate";
 
+    }
+    @RequestMapping(value = "/stu/writerGuifanChange/Update/{id}", method = RequestMethod.POST)
+    public String writerGuifanUpdate_post(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct=new Correct();
+        List<Correct> list=new ArrayList<Correct>();
+        correct.Tno=id;
+        list=correctServiceImpl.select(correct);
+        correct=list.get(0);
+        correct.Tname=request.getParameter("Tname");
+        correct.text=request.getParameter("text");
+        correctServiceImpl.update(correct);
+        Correct correct1 = new Correct();
+        correct1.type = "Guifan";
+        Guifanlist_writer = correctDao.selectT(correct1.type);
+        return "redirect:/stu/writerGuifanChange";
+
+    }
     @RequestMapping(value = "/stu/writerTianChange/Delete/{id}", method = RequestMethod.GET)
     public String writerTianDelete(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
@@ -302,7 +379,6 @@ public class StudentController {
 
     @RequestMapping(value = "/stu/writerGuifanChange", method = RequestMethod.GET)
     public String writerGuifanChange(HttpServletRequest request) {
-        ;
         List<Correct> list = writer.showyourGuifan();
         request.setAttribute("students", list);
         return "writerGuifanChange";
@@ -311,10 +387,39 @@ public class StudentController {
 
     @RequestMapping(value = "/stu/writerInfoChange", method = RequestMethod.GET)
     public String writerInfoChange(HttpServletRequest request) {
+        User user=new User();
+        List<User> list=new ArrayList<User>();
+        user.useornot="yes";
+        list=userServiceImpl.select(user);
+        request.setAttribute("students", list.get(0));
         return "writerInfoChange";
 
     }
+    @RequestMapping(value = "/stu/writerInfoChange/Update/{id}", method = RequestMethod.GET)
+    public String writerInfoUpdate(HttpServletRequest request, @PathVariable("id") String id) {
+        return "writerInfoUpdate";
 
+    }
+    @RequestMapping(value = "/stu/writerInfoChange/Update/{id}", method = RequestMethod.POST)
+    public String writerInfoUpdate_post(HttpServletRequest request, @PathVariable("id") String id) {
+        User user=new User();
+        List<User> list = new ArrayList<User>();
+        user.username=id;
+        list = userServiceImpl.select(user);
+        user = list.get(0);
+        System.out.println(user.username);
+        System.out.println(user.password);
+        user.name=request.getParameter("name");
+        user.sex=request.getParameter("sex");
+        user.dateofbirth=request.getParameter("dateofbirth");
+        user.address=request.getParameter("address");
+        user.phoneno=request.getParameter("phoneno");
+        user.leader=request.getParameter("leader");
+        user.community=request.getParameter("community");
+        user.company=request.getParameter("company");
+        userServiceImpl.update(user);
+        return "redirect:/stu/writerInfoChange";
+    }
     @RequestMapping(value = "/stu/rulerIDManage", method = RequestMethod.GET)
     public String rulerIDManage(HttpServletRequest request) {
         //User user = new User();
@@ -347,11 +452,34 @@ public class StudentController {
     @RequestMapping(value = "/stu/rulerIDManage/Info/{id}", method = RequestMethod.GET)
     public String rulerIDInfo(HttpServletRequest request, @PathVariable("id") String id) {
         User user=new User();
+        Suggest suggest=new Suggest();
         List<User> list = new ArrayList<User>();
+        List<Suggest> list2=new ArrayList<Suggest>();
         user.username = id;
         list = userServiceImpl.select(user);
         request.setAttribute("students", list);
+        suggest.besuggested=id;
+        list2=suggestServiceImpl.select(suggest.besuggested);
+        request.setAttribute("suggest",list2);
         return "rulerIDInfo";
+    }
+    @RequestMapping(value = "/stu/rulerIDManage/Update/{id}", method = RequestMethod.GET)
+    public String rulerIDUpdate(HttpServletRequest request, @PathVariable("id") String id) {
+        User user = new User();
+        List<User> list=new ArrayList<User>();
+        //List<Correct> list = new ArrayList<Correct>();
+        user.username = id;
+        list=userServiceImpl.select(user);
+        user=list.get(0);
+        user.identity="writer";
+        userServiceImpl.update(user);
+        User user1 = new User();
+        user1.identity = "waiting";
+        Waitinglist_ruler = userDao.selectI(user1.identity);
+        User user2 = new User();
+        user2.identity = "writer";
+        Writerlist_ruler = userDao.selectI(user2.identity);
+        return "redirect:/stu/rulerIDManage";
     }
     @RequestMapping(value = "/stu/rulerIDManage/Delete/{id}", method = RequestMethod.GET)
     public String rulerIDDelete(HttpServletRequest request, @PathVariable("id") String id) {
@@ -403,6 +531,24 @@ public class StudentController {
         request.setAttribute("students", list);
         return "rulerIDUpAndDelInfo";
     }
+    @RequestMapping(value = "/stu/rulerIDUpAndDel/Update/{id}", method = RequestMethod.GET)
+    public String rulerIDUpAndDelUpdate(HttpServletRequest request, @PathVariable("id") String id) {
+        User user = new User();
+        List<User> list=new ArrayList<User>();
+        //List<Correct> list = new ArrayList<Correct>();
+        user.username = id;
+        list=userServiceImpl.select(user);
+        user=list.get(0);
+        user.identity="manager";
+        userServiceImpl.update(user);
+        User user1 = new User();
+        user1.identity = "waiting";
+        Waitinglist_ruler = userDao.selectI(user1.identity);
+        User user2 = new User();
+        user2.identity = "writer";
+        Writerlist_ruler = userDao.selectI(user2.identity);
+        return "redirect:/stu/rulerIDUpAndDel";
+    }
     @RequestMapping(value = "/stu/rulerIDUpAndDel/Delete/{id}", method = RequestMethod.GET)
     public String rulerIDUpAndDelete(HttpServletRequest request, @PathVariable("id") String id) {
         User user = new User();
@@ -439,6 +585,23 @@ public class StudentController {
         list = correctServiceImpl.select(correct);
         request.setAttribute("students", list);
         return "rulerTianInfo";
+    }
+    @RequestMapping(value = "/stu/rulerTianManage/Update/{id}", method = RequestMethod.GET)
+    public String rulerTianUpdate(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        List<User> list2=new ArrayList<User>();
+        List<Correct> list=new ArrayList<Correct>();
+        //List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        list=correctServiceImpl.select(correct);
+        correct=list.get(0);
+        correct.acceptornot="yes";
+        User user=new User();
+        user.useornot="yes";
+        list2=userServiceImpl.select(user);
+        correct.acceptpeople=list2.get(0).name;
+        correctServiceImpl.update(correct);
+        return "redirect:/stu/rulerTianManage";
     }
     @RequestMapping(value = "/stu/rulerTianManage/Delete/{id}", method = RequestMethod.GET)
     public String rulerTianManageDelete(HttpServletRequest request, @PathVariable("id") int id) {
@@ -504,6 +667,23 @@ public class StudentController {
         list = correctServiceImpl.select(correct);
         request.setAttribute("students", list);
         return "rulerGuifanInfo";
+    }
+    @RequestMapping(value = "/stu/rulerGuifanManage/Update/{id}", method = RequestMethod.GET)
+    public String rulerGuifanUpdate(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        List<User> list2=new ArrayList<User>();
+        List<Correct> list=new ArrayList<Correct>();
+        //List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        list=correctServiceImpl.select(correct);
+        correct=list.get(0);
+        correct.acceptornot="yes";
+        User user=new User();
+        user.useornot="yes";
+        list2=userServiceImpl.select(user);
+        correct.acceptpeople=list2.get(0).name;
+        correctServiceImpl.update(correct);
+        return "redirect:/stu/rulerGuifanManage";
     }
     @RequestMapping(value = "/stu/rulerGuifanManage/Delete/{id}", method = RequestMethod.GET)
     public String rulerGuifanManageDelete(HttpServletRequest request, @PathVariable("id") int id) {

@@ -81,7 +81,9 @@
                                 </a>
                             </td>
                             <td align="center">
-                                <button type="button" class="btn btn-default">同意</button>
+                                <a th:href="@{/stu/rulerTianManage/Update/{id}(id=${s.getTno()})}">
+                                    <button type="button" class="btn btn-default">同意</button>
+                                </a>
                                 <a th:href="@{/stu/rulerTianManage/Delete/{id}(id=${s.getTno()})}">
                                     <button type="button" class="btn btn-default">拒绝</button>
                                 </a>

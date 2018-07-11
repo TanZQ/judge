@@ -92,7 +92,9 @@
                                 </a>
                             </td>
                             <td align="center">
-                                <button type="button" class="btn btn-default">晋升</button>
+                                <a th:href="@{/stu/rulerIDUpAndDel/Update/{id}(id=${s.getUsername()})}">
+                                    <button type="button" class="btn btn-default">晋升</button>
+                                </a>
                                 <a th:href="@{/stu/rulerIDUpAndDel/Delete/{id}(id=${s.getUsername()})}">
                                     <button type="button" class="btn btn-default">删除</button>
                                 </a>

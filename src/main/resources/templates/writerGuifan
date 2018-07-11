@@ -29,6 +29,7 @@
                         		<li><a href="writerInfoChange">修改个人信息</a></li>
                         	</ul>
                         </li>
+                        <li><a href="writerSuggest">会员推荐</a></li>
         			</ul>
         		</div>
                 <div align="right" style="padding-top:10px">

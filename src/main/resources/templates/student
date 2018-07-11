@@ -138,7 +138,7 @@
                                         <select name="company" class="form-control">
                                             <option value="专委会1">专委会1</option>
                                             <option value="专委会2">专委会2</option>
-                                            <option value="专委会会3">专委会3</option>
+                                            <option value="专委会3">专委会3</option>
                                             <option value="专委会4">专委会4</option>
                                             <option value="专委会5">专委会5</option>
                                         </select>

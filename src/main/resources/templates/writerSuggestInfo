@@ -35,7 +35,7 @@
                         <td align="center" th:text=" ${s.getDateofbirth()}">567</td>
                         <td align="center" th:text=" ${s.getAddress()}">567</td>
                         <td align="center" th:text=" ${s.getPhoneno()}">567</td>
-                        <td align="center" th:text=" ${s.getLeader()}">123</td>
+                        <td align="center" th:text=" ${s.getLeader()}">567</td>
                         <td align="center" th:text=" ${s.getCommunity()}">567</td>
                         <td align="center" th:text=" ${s.getCompany()}">567</td>
                     </tr>
@@ -43,7 +43,7 @@
             </table>
         </div>
         <div align="center" style="padding-top:2%">
-            <a href="/stu/rulerIDManage">
+            <a href="/stu/writerSuggest">
                 <button type="button" class="btn btn-default">返回</button>
             </a>
         </div>
