@@ -49,7 +49,6 @@ public class Writer {
         this.correct.acceptpeople="noone";
         this.user.useornot="yes";
         this.correct.type="Guifan";
-        this.correct.Tno=5;
         this.userlist=userServiceImpl.select(this.user);
         this.correct.author=this.userlist.get(0).name;
         return correctServiceImpl.insert(this.correct);
