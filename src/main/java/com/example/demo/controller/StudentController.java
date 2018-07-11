@@ -153,9 +153,10 @@ public class StudentController {
             return "redirect:/stu/writerTian";
         else if (identity.equals("manager"))
             return "redirect:/stu/rulerIDManage";
+        else if(identity.equals("wrong")||identity.equals("notfound"))
+            return "loginFailed";
         return "login";
     }
-
     @RequestMapping(value = "/stu/writerTian", method = RequestMethod.GET)
     public String writerTian(HttpServletRequest request) {
         //Correct correct=new Correct();
