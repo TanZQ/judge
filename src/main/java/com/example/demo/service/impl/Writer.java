@@ -4,8 +4,9 @@ import com.example.demo.entity.Correct;
 import com.example.demo.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.example.demo.dao.CorrectDao;
 import javax.swing.plaf.synth.SynthEditorPaneUI;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Calendar;
 import java.text.SimpleDateFormat;
@@ -19,6 +20,8 @@ public class Writer {
     private CorrectServiceImpl correctServiceImpl=new CorrectServiceImpl();
     @Autowired
     private UserServiceImpl userServiceImpl=new UserServiceImpl();
+    @Autowired
+    private CorrectDao correctDao;
     public List<Correct> proposalsearching(Correct correct){
         List<Correct> correctlist;
         this.correct=correct;
@@ -63,23 +66,36 @@ public class Writer {
     }
     public List<Correct> showyourTian(){
         Correct correct0=new Correct();
-        List<Correct> list0;
+        List<Correct> list0=new ArrayList<Correct>();
+        List<Correct> list1=new ArrayList<Correct>();
+        List<Correct> list2=new ArrayList<Correct>();
         this.user.useornot="yes";
         this.userlist=userServiceImpl.select(this.user);
-        System.out.println(this.userlist.size());
-        //correct0.author=this.userlist.get(0).username;
+        correct0.author=this.userlist.get(0).name;
         correct0.type="Tian";
-        list0=correctServiceImpl.select(correct0);
+        list1=correctDao.selectA(correct0.author);
+        for(int i=0;i<list1.size();i++) {
+            if(list1.get(i).type.equals("Tian"))
+                list2.add(list1.get(i));
+        }
+        list0=list2;
         return list0;
     }
     public List<Correct> showyourGuifan(){
         Correct correct0=new Correct();
-        List<Correct> list0;
+        List<Correct> list0=new ArrayList<Correct>();
+        List<Correct> list1=new ArrayList<Correct>();
+        List<Correct> list2=new ArrayList<Correct>();
         this.user.useornot="yes";
         this.userlist=userServiceImpl.select(this.user);
-        correct0.author=this.userlist.get(0).username;
+        correct0.author=this.userlist.get(0).name;
         correct0.type="Guifan";
-        list0=correctServiceImpl.select(correct0);
+        list1=correctDao.selectA(correct0.author);
+        for(int i=0;i<list1.size();i++) {
+            if(list1.get(i).type.equals("Guifan"))
+                list2.add(list1.get(i));
+        }
+        list0=list2;
         return list0;
     }
     public boolean update(Correct correct){

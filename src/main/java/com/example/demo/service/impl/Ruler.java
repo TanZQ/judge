@@ -45,11 +45,9 @@ public class Ruler {
         this.tian.type="Tian";
         this.tian.acceptornot="yes";
         listtian=correctDao.selectT(this.tian.type);
-        for(int i=0;i<listtian.size();i++){
-            System.out.println("tianyes");
+        for(int i=0;i<listtian.size();i++){ ;
             if(listtian.get(i).acceptornot.equals(this.tian.acceptornot)) {
                 listtian2.add(listtian.get(i));
-                System.out.println(listtian.get(i).Tno);
             }
         }
         return listtian2;
@@ -61,9 +59,7 @@ public class Ruler {
         this.tian.acceptornot="no";
         listtian=correctDao.selectT(this.tian.type);
         for(int i=0;i<listtian.size();i++){
-            System.out.println("tianno");
             if(listtian.get(i).acceptornot.equals(this.tian.acceptornot)){
-                System.out.println(listtian.get(i).Tno);
                 listtian2.add(listtian.get(i));
             }
         }
@@ -76,9 +72,7 @@ public class Ruler {
         this.guifan.acceptornot="no";
         listguifan=correctDao.selectT(this.guifan.type);
         for(int i=0;i<listguifan.size();i++){
-            System.out.println("guifanno");
             if(listguifan.get(i).acceptornot.equals(this.guifan.acceptornot)){
-                System.out.println(listguifan.get(i).Tno);
                 listguifan2.add(listguifan.get(i));
             }
 
@@ -92,9 +86,7 @@ public class Ruler {
         this.guifan.acceptornot="yes";
         listguifan=correctDao.selectT(this.guifan.type);
         for(int i=0;i<listguifan.size();i++){
-            System.out.println("guifanyes");
             if(listguifan.get(i).acceptornot.equals(this.guifan.acceptornot)){
-                System.out.println(listguifan.get(i).Tno);
                 listguifan2.add(listguifan.get(i));
             }
 

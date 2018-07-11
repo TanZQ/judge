@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="main.css" type="text/css" rel="stylesheet">
+        <title>能力规范管理系统</title>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+
+
+    <body>
+        <div style="background-color:rgba(255,255,255,0.5); margin-left:30%; margin-right:30%; margin-top:5%; padding-bottom:5%;">
+            <div align="center" style="font-size:32px; padding-top:5%; color:#000000">
+                修改个人信息
+            </div>
+            <div class="modal-dialog">
+                <div class="modal-body">
+                    <div style="padding: 10px 100px 10px;">
+                        <form class="bs-example bs-example-form" id="form" role="form" method="post">
+                            <div class="input-group">
+                                <span class="input-group-addon">姓名</span>
+                                <input type="text" name="name" class="form-control" placeholder="请输入姓名" required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">性别</span>
+                                <table width="100%" height="35px">
+                                    <tr>
+                                        <td align="center"><input type="radio" name="sex" value="male" checked>男</td>
+                                        <td align="center"><input type="radio" name="sex" value="female"> 女</td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">联系方式</span>
+                                <input type="text" name="phoneno" class="form-control" placeholder="请输入手机或座机号码" required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                 <span class="input-group-addon">出生日期</span>
+                                <input type="date" name="dateofbirth" class="form-control" required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">家庭住址</span>
+                                <input type="text" name="address" class="form-control" placeholder="请输入家庭住址" required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">推荐人</span>
+                                <input type="text" name="leader" class="form-control" placeholder="请输入推荐人姓名" required>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">行业分会</span>
+                                <select name="community" class="form-control">
+                                    <option value="分会1">分会1</option>
+                                    <option value="分会2">分会2</option>
+                                    <option value="分会3">分会3</option>
+                                    <option value="分会4">分会4</option>
+                                    <option value="分会5">分会5</option>
+                                </select>
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <span class="input-group-addon">专委会</span>
+                                <select name="company" class="form-control">
+                                    <option value="专委会1">专委会1</option>
+                                    <option value="专委会2">专委会2</option>
+                                    <option value="专委会3">专委会3</option>
+                                    <option value="专委会4">专委会4</option>
+                                    <option value="专委会5">专委会5</option>
+                                </select>
+                            </div>
+                            <br>
+                            <br>
+                            <div align="center">
+                                <button type="submit"  class="btn btn-primary" id="register">
+                                    修改
+                                </button>
+                                <a href="/stu/writerInfoChange">
+                                    <button type="button" class="btn btn-default">返回</button>
+                                </a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
+

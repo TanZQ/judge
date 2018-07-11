@@ -52,18 +52,29 @@ CREATE TABLE `Correct`(
   `text` varchar(500) character set utf8 default '空' comment '文本',
   primary key (`Tno`)
 )engine =InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8 comment='规范表';
+
+DROP TABLE IF EXISTS `Suggest`;
+
+CREATE TABLE `Suggest`(
+  `id` INT(100)  NOT NULL AUTO_INCREMENT comment 'ID',
+  `suggestpeople` varchar(100) character set utf8 default 'admin' comment '推荐人',
+  `reason` varchar(100) character set utf8 default 'sssss' comment '推荐原因',
+  `besuggested` varchar(100) character set utf8 default '张三' comment '被推荐人',
+  primary key (`id`)
+)engine =InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET = utf8 comment='推荐表';
 -- ----------------------------
 --  Records of `student`
 -- ----------------------------
 BEGIN;
 INSERT INTO `user` VALUES ('1','222', 'admin', '张三', '男','19980711','空','17801127082','空','空','空','waiting','no');
-INSERT INTO `user` VALUES ('2','admin', '123', 'lisi', '男','19980711','空','17801127082','空','空','空','manager','yes');
+INSERT INTO `user` VALUES ('2','admin', '123', 'lisi', '男','19980711','空','17801127082','空','空','空','manager','no');
 INSERT INTO `user` VALUES ('3','333', '234', '23444', '男','19980711','空','17801127082','空','空','空','writer','no');
 INSERT INTO `user` VALUES ('4','444', '345', 'hhhh', '男','19980711','空','17801127082','空','空','空','waiting','no');
 INSERT INTO `Correct` VALUES ('001', '提案1', '张三', '2018-3-2','no','空','Tian','空');
 INSERT INTO `Correct` VALUES ('002', '规范1', 'admin', '2018-3-2','yes','空','Guifan','空');
 INSERT INTO `Correct` VALUES ('003', '提案3', 'admin', '2018-3-2','yes','空','Tian','空');
 INSERT INTO `Correct` VALUES ('004', '规范2', 'admin', '2018-3-2','no','空','Guifan','空');
+INSERT INTO `Suggest` VALUES ('001', 'admin', 'ssss', '3333');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;

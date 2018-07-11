@@ -29,6 +29,7 @@
                         		<li><a href="writerInfoChange">修改个人信息</a></li>
                         	</ul>
                         </li>
+                        <li><a href="writerSuggest">会员推荐</a></li>
         			</ul>
         		</div>
                 <div align="right" style="padding-top:10px">
@@ -43,23 +44,6 @@
     <!--内容-->
         <div style="background-color:#D7D7D7; margin-left:25%; margin-right:25%;" >
         	<div align="center" style="font-size:24px; padding-top:2%; padding-bottom:2%">您提交的提案</div>
-        	<div>
-        		<div class="input-group">
-        			<span class="input-group-btn" style="width:15%">
-        				<select class="form-control">
-        					<option value="提案编号">提案编号</option>
-        					<option value="提案名称">提案名称</option>
-        					<option value="提交日期">提交日期</option>
-        				</select>
-        			</span>
-        			<input type="text" class="form-control" placeholder="请输入搜索关键字">
-        			<span class="input-group-btn">
-        				<button class="btn btn-default" type="button">
-        					搜索
-        				</button>
-        			</span>
-        		</div>
-        	</div>
         	<div style="padding-top:2%">
         		<table class="table table-striped">
         		    <thead>
@@ -80,8 +64,12 @@
                             <td align="center" th:text=" ${s.getDate()}">456</td>
                             <td align="center" th:text=" ${s.getAcceptornot()}">567</td>
                             <td align="center">
-                                <button class="btn btn-primary" type="button" data-toggle="modal" data-target="#myModal">修改</button>
-                                <button class="btn btn-primary" type="button">删除</button>
+                                <a th:href="@{/stu/writerTianChange/Update/{id}(id=${s.getTno()})}">
+                                    <button class="btn btn-primary" type="button">修改</button>
+                                </a>
+                                <a th:href="@{/stu/writerTianChange/Delete/{id}(id=${s.getTno()})}">
+                                    <button class="btn btn-primary" type="button">删除</button>
+                                </a>
                             </td>
                         </tr>
         			</tbody>
