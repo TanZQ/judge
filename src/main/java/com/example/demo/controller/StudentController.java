@@ -4,12 +4,14 @@ import com.example.demo.service.impl.Ruler;
 import com.example.demo.service.impl.Writer;
 import com.example.demo.service.impl.Regist;
 import com.example.demo.service.impl.Login;
+import com.example.demo.service.impl.Logoff;
 import com.example.demo.entity.Correct;
 import com.example.demo.dao.CorrectDao;
 import com.example.demo.dao.UserDao;
 import com.example.demo.entity.User;
 import com.example.demo.service.CorrectService;
 import com.example.demo.service.impl.CorrectServiceImpl;
+import com.example.demo.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -29,6 +31,8 @@ public class StudentController {
     @Autowired
     private CorrectServiceImpl correctServiceImpl;
     @Autowired
+    private UserServiceImpl userServiceImpl;
+    @Autowired
     private Writer writer;
     @Autowired
     private Ruler ruler;
@@ -39,11 +43,17 @@ public class StudentController {
     @Autowired
     private Login login;
     @Autowired
+    private Logoff logoff;
+    @Autowired
     private UserDao userDao;
     private String judge;
 
     @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.GET)
     public String getAllStudent(HttpServletRequest request){
+        User user=new User();
+        user.useornot="yes";
+        if(userServiceImpl.select(user).size()!=0)
+            logoff.logoff();
         return "student";
     }
     @RequestMapping(value = "/stu/getAllStudent",method = RequestMethod.POST)
@@ -70,6 +80,26 @@ public class StudentController {
         judge=login.login(user);
         return "stu/judge";
     }*/
+    @RequestMapping(value = "/stu/login",method = RequestMethod.GET)
+    public String loginRuler(HttpServletRequest request){
+        return "login";
+    }
+    @RequestMapping(value = "/stu/login",method = RequestMethod.POST)
+    public String loginRuler_post(HttpServletRequest request){
+        User user=new User();
+        user.username=request.getParameter("username");
+        user.password=request.getParameter("userpassword");
+        System.out.println(user.username);
+        System.out.println(user.password);
+        String identity=login.login(user);
+        login.recordusinguser();
+        if(identity.equals("writer"))
+            return "redirect:/stu/writerTian";
+        else if(identity.equals("manager"))
+            return "redirect:/stu/rulerIDManage";
+
+        return "login";
+    }
     @RequestMapping(value = "/stu/writerTian",method = RequestMethod.GET)
     public String writerTian(HttpServletRequest request){
         Correct correct=new Correct();

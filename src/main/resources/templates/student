@@ -10,154 +10,153 @@
     </head>
 
 
- <body>
-      <div style="background-color:rgba(255,255,255,0.5); margin-left:30%; margin-right:30%; margin-top:5%; padding-bottom:5%;">
-         <div align="center" style="font-size:32px; padding-top:10%; color:#000000">
-            能力规范文稿管理系统
-         </div>
-         <div align="center" style="padding-top:15%">
-               <table width="100%">
-                  <tr>
-                     <td align="center"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal1" style="width:150px">登录</button></td>
-                     <td align="center"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" style="width:150px">注册</button></td>
-                  </tr>
-               </table>
+    <body>
+        <div style="background-color:rgba(255,255,255,0.5); margin-left:30%; margin-right:30%; margin-top:5%; padding-bottom:5%;">
+            <div align="center" style="font-size:32px; padding-top:10%; color:#000000">
+                能力规范文稿管理系统
+            </div>
+            <div align="center" style="padding-top:15%">
+                <table width="100%">
+                    <tr>
+                        <td align="center">
+                            <a href="login">
+                                <button type="button" class="btn btn-primary btn-lg" style="width:150px">登录</button>
+                            </a>
+                        </td>
+                        <td align="center"><button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal2" style="width:150px">注册</button></td>
+                    </tr>
+                </table>
             </div>
 
-         <!--登录-->
-         <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                     </button>
-                     <h4 class="modal-title" id="myModalLabel" align="center">
-                        登录
-                     </h4>
-                  </div>
-                  <div class="modal-body">
-                     <div style="padding: 10px 100px 10px;">
-                        <form class="bs-example bs-example-form" role="form" >
-                           <div class="input-group">
-                              <span class="input-group-addon">用户名</span>
-                              <input type="text" class="form-control" name="uname" placeholder="请输入用户名">
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">密码</span>
-                              <input type="password" class="form-control" name="upassword" placeholder="请输入密码">
-                           </div>
-                           <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+            <!--登录-->
+            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
                             </button>
-                            <button type="submit" class="btn btn-primary">
-                               登录
-                            </button>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-
-               </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
-         </div>
-
-         <!--注册-->
-         <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-               <div class="modal-content">
-                  <div class="modal-header">
-                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                        &times;
-                     </button>
-                     <h4 class="modal-title" id="myModalLabel" align="center">
-                        注册
-                     </h4>
-                  </div>
-                  <div class="modal-body">
-                     <div style="padding: 10px 100px 10px;">
-                        <form class="bs-example bs-example-form" id="form" role="form" action="/stu/getAllStudent" method="post">
-                           <div class="input-group">
-                              <span class="input-group-addon">用户名</span>
-                              <input type="text" name="username" class="form-control" placeholder="请输入用户名" required>
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">密码</span>
-                              <input type="password" name="password" class="form-control" placeholder="请输入密码" required>
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">姓名</span>
-                              <input type="text" name="name" class="form-control" placeholder="请输入姓名" required>
+                            <h4 class="modal-title" id="myModalLabel" align="center">
+                                登录
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div style="padding: 10px 100px 10px;">
+                                <table width="100%">
+                                    <tr>
+                                        <td align="center">
+                                            <a href="loginRuler">
+                                                <button type="button" class="btn btn-primary btn-lg" style="width:150px">管理员登录</button>
+                                            </a>
+                                        </td>
+                                        <td align="center">
+                                            <a href="loginWriter">
+                                                <button type="button" class="btn btn-primary btn-lg" style="width:150px">写者登录</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">性别</span>
-                              <table width="100%" height="35px">
-                                 <tr>
-                                    <td align="center"><input type="radio" name="sex" value="male" checked>男</td>
-                                    <td align="center"><input type="radio" name="sex" value="female"> 女</td>
-                                 </tr>
-                              </table>
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">联系方式</span>
-                              <input type="text" name="phoneno" class="form-control" placeholder="请输入手机或座机号码" required>
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">出生日期</span>
-                              <input type="date" name="dateofbirth" class="form-control" required>
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">家庭住址</span>
-                              <input type="text" name="address" class="form-control" placeholder="请输入家庭住址" required>
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">推荐人</span>
-                              <input type="text" name="leader" class="form-control" placeholder="请输入推荐人姓名" required>
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">行业分会</span>
-                              <select name="community" class="form-control">
-                                 <option value="分会1">分会1</option>
-                                 <option value="分会2">分会2</option>
-                                 <option value="分会3">分会3</option>
-                                 <option value="分会4">分会4</option>
-                                 <option value="分会5">分会5</option>
-                              </select>
-                           </div>
-                           <br>
-                           <div class="input-group">
-                              <span class="input-group-addon">专委会</span>
-                               <select name="company" class="form-control">
-                                 <option value="专委会1">专委会1</option>
-                                 <option value="专委会2">专委会2</option>
-                                 <option value="专委会会3">专委会3</option>
-                                 <option value="专委会4">专委会4</option>
-                                 <option value="专委会5">专委会5</option>
-                              </select>
-                           </div>
-                           <br>
-                           <br>
-                           <div align="center">
-                               <button type="submit"  class="btn btn-primary" id="register">
-                                   注册
-                               </button>
-                           </div>
-                        </form>
-                     </div>
-                  </div>
-               </div><!-- /.modal-content -->
-            </div><!-- /.modal -->
-         </div>
-      </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+
+            <!--注册-->
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h4 class="modal-title" id="myModalLabel" align="center">
+                                注册
+                            </h4>
+                        </div>
+                        <div class="modal-body">
+                            <div style="padding: 10px 100px 10px;">
+                                <form class="bs-example bs-example-form" id="form" role="form" action="/stu/getAllStudent" method="post">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">用户名</span>
+                                        <input type="text" name="username" class="form-control" placeholder="请输入用户名" required>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">密码</span>
+                                        <input type="password" name="password" class="form-control" placeholder="请输入密码" required>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">姓名</span>
+                                        <input type="text" name="name" class="form-control" placeholder="请输入姓名" required>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">性别</span>
+                                        <table width="100%" height="35px">
+                                            <tr>
+                                                <td align="center"><input type="radio" name="sex" value="male" checked>男</td>
+                                                <td align="center"><input type="radio" name="sex" value="female"> 女</td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">联系方式</span>
+                                        <input type="text" name="phoneno" class="form-control" placeholder="请输入手机或座机号码" required>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">出生日期</span>
+                                        <input type="date" name="dateofbirth" class="form-control" required>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">家庭住址</span>
+                                        <input type="text" name="address" class="form-control" placeholder="请输入家庭住址" required>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">推荐人</span>
+                                        <input type="text" name="leader" class="form-control" placeholder="请输入推荐人姓名" required>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">行业分会</span>
+                                        <select name="community" class="form-control">
+                                            <option value="分会1">分会1</option>
+                                            <option value="分会2">分会2</option>
+                                            <option value="分会3">分会3</option>
+                                            <option value="分会4">分会4</option>
+                                            <option value="分会5">分会5</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">专委会</span>
+                                        <select name="company" class="form-control">
+                                            <option value="专委会1">专委会1</option>
+                                            <option value="专委会2">专委会2</option>
+                                            <option value="专委会会3">专委会3</option>
+                                            <option value="专委会4">专委会4</option>
+                                            <option value="专委会5">专委会5</option>
+                                        </select>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div align="center">
+                                        <button type="submit"  class="btn btn-primary" id="register">
+                                            注册
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
     </body>
 </html>
 

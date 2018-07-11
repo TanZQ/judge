@@ -57,7 +57,7 @@ CREATE TABLE `Correct`(
 -- ----------------------------
 BEGIN;
 INSERT INTO `user` VALUES ('1','222', 'admin', '张三', '男','19980711','空','17801127082','空','空','空','waiting','no');
-INSERT INTO `user` VALUES ('2','admin', '123', 'lisi', '男','19980711','空','17801127082','空','空','空','manager','yes');
+INSERT INTO `user` VALUES ('2','admin', '123', 'lisi', '男','19980711','空','17801127082','空','空','空','manager','no');
 INSERT INTO `user` VALUES ('3','333', '234', '23444', '男','19980711','空','17801127082','空','空','空','writer','no');
 INSERT INTO `user` VALUES ('4','444', '345', 'hhhh', '男','19980711','空','17801127082','空','空','空','waiting','no');
 INSERT INTO `Correct` VALUES ('001', '提案1', '张三', '2018-3-2','no','空','Tian','空');
