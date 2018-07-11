@@ -344,7 +344,15 @@ public class StudentController {
         Waitinglist_ruler = list2;
         return "redirect:/stu/rulerIDManage";
     }
-
+    @RequestMapping(value = "/stu/rulerIDManage/Info/{id}", method = RequestMethod.GET)
+    public String rulerIDInfo(HttpServletRequest request, @PathVariable("id") String id) {
+        User user=new User();
+        List<User> list = new ArrayList<User>();
+        user.username = id;
+        list = userServiceImpl.select(user);
+        request.setAttribute("students", list);
+        return "rulerIDInfo";
+    }
     @RequestMapping(value = "/stu/rulerIDManage/Delete/{id}", method = RequestMethod.GET)
     public String rulerIDDelete(HttpServletRequest request, @PathVariable("id") String id) {
         User user = new User();
@@ -386,7 +394,15 @@ public class StudentController {
         Writerlist_ruler = list2;
         return "redirect:/stu/rulerIDUpAndDel";
     }
-
+    @RequestMapping(value = "/stu/rulerIDUpAndDel/Info/{id}", method = RequestMethod.GET)
+    public String rulerIDUpAndDelInfo(HttpServletRequest request, @PathVariable("id") String id) {
+        User user=new User();
+        List<User> list = new ArrayList<User>();
+        user.username = id;
+        list = userServiceImpl.select(user);
+        request.setAttribute("students", list);
+        return "rulerIDUpAndDelInfo";
+    }
     @RequestMapping(value = "/stu/rulerIDUpAndDel/Delete/{id}", method = RequestMethod.GET)
     public String rulerIDUpAndDelete(HttpServletRequest request, @PathVariable("id") String id) {
         User user = new User();
@@ -415,7 +431,15 @@ public class StudentController {
         return "rulerTianManage";
 
     }
-
+    @RequestMapping(value = "/stu/rulerTianManage/Info/{id}", method = RequestMethod.GET)
+    public String rulerTianInfo(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        list = correctServiceImpl.select(correct);
+        request.setAttribute("students", list);
+        return "rulerTianInfo";
+    }
     @RequestMapping(value = "/stu/rulerTianManage/Delete/{id}", method = RequestMethod.GET)
     public String rulerTianManageDelete(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
@@ -435,7 +459,15 @@ public class StudentController {
         return "rulerTianDel";
 
     }
-
+    @RequestMapping(value = "/stu/rulerTianDel/Info/{id}", method = RequestMethod.GET)
+    public String rulerTianDelInfo(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        list = correctServiceImpl.select(correct);
+        request.setAttribute("students", list);
+        return "rulerTianDelInfo";
+    }
     @RequestMapping(value = "/stu/rulerTianDel/Delete/{id}", method = RequestMethod.GET)
     public String rulerTianDelDelete(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
@@ -464,7 +496,15 @@ public class StudentController {
         return "rulerGuifanManage";
 
     }
-
+    @RequestMapping(value = "/stu/rulerGuifanManage/Info/{id}", method = RequestMethod.GET)
+    public String rulerGuifanInfo(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        list = correctServiceImpl.select(correct);
+        request.setAttribute("students", list);
+        return "rulerGuifanInfo";
+    }
     @RequestMapping(value = "/stu/rulerGuifanManage/Delete/{id}", method = RequestMethod.GET)
     public String rulerGuifanManageDelete(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();
@@ -493,7 +533,15 @@ public class StudentController {
         ruler.proposalwriting_Guifan(correct);
         return "redirect:/stu/rulerGuifanDel";
     }
-
+    @RequestMapping(value = "/stu/rulerGuifanDel/Info/{id}", method = RequestMethod.GET)
+    public String rulerGuifanDelInfo(HttpServletRequest request, @PathVariable("id") int id) {
+        Correct correct = new Correct();
+        List<Correct> list = new ArrayList<Correct>();
+        correct.Tno = id;
+        list = correctServiceImpl.select(correct);
+        request.setAttribute("students", list);
+        return "rulerGuifanDelInfo";
+    }
     @RequestMapping(value = "/stu/rulerGuifanDel/Delete/{id}", method = RequestMethod.GET)
     public String rulerGuifanDelDelete(HttpServletRequest request, @PathVariable("id") int id) {
         Correct correct = new Correct();

@@ -87,7 +87,9 @@
                             <td align="center" th:text=" ${s.getUsername()}">123@qq.com</td>
                             <td align="center" th:text=" ${s.getName()}">123</td>
                             <td align="center">
-                                <button type="button" class="btn btn-default" data-toggle="modal" data-target="#myModal">查看详情</button>
+                                <a th:href="@{/stu/rulerIDUpAndDel/Info/{id}(id=${s.getUsername()})}">
+                                    <button type="button" class="btn btn-default">查看详情</button>
+                                </a>
                             </td>
                             <td align="center">
                                 <button type="button" class="btn btn-default">晋升</button>
@@ -98,62 +100,6 @@
                         </tr>
          			</tbody>
          		</table>
-         	</div>
-         	<!--用户详情-->
-         	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-         		<div class="modal-dialog">
-         		    <div class="modal-content">
-         			    <div class="modal-header">
-         				    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-         				        &times;
-         				    </button>
-         				    <h4 class="modal-title" id="myModalLabel" align="center">
-         				        详细信息
-         				    </h4>
-         				</div>
-         				<div class="modal-body">
-                         	<div style="padding-top:2%; padding-left:10%; padding-right:10%">
- 								<table class="table">
- 									<tr>
- 										<td align="center" style="width:50%">姓名</td>
- 										<td align="center">123</td>
- 									</tr>
- 									<tr>
- 										<td align="center">性别</td>
- 										<td align="center">123</td>
- 									</tr>
- 									<tr>
- 										<td align="center">联系方式</td>
- 										<td align="center">432</td>
- 									</tr>
- 									<tr>
- 										<td align="center">出生日期</td>
- 										<td align="center">432</td>
- 									</tr>
- 									<tr>
- 										<td align="center">家庭住址</td>
- 										<td align="center">432</td>
- 									</tr>
- 									<tr>
- 										<td align="center">推荐人</td>
- 										<td align="center">432</td>
- 									</tr>
- 									<tr>
- 										<td align="center">行业分会</td>
- 										<td align="center">432</td>
- 									</tr>
- 									<tr>
- 										<td align="center">专委会</td>
- 										<td align="center">432</td>
- 									</tr>
- 								</table>
- 							</div>
-         				</div>
-         				<div class="modal-footer">
-         				    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-         				</div>
-         			</div><!-- /.modal-content -->
-         		</div><!-- /.modal -->
          	</div>
         </div>
     </body>

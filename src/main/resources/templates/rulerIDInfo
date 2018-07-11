@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link href="main.css" type="text/css" rel="stylesheet">
+        <title>能力规范管理系统</title>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div align="center" style="font-size:32px; padding-top:2%; color:#000000">
+            用户详情
+        </div>
+        <div style="padding-top:2%">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td align="center">用户名</td>
+                        <td align="center">姓名</td>
+                        <td align="center">性别</td>
+                        <td align="center">出生日期</td>
+                        <td align="center">家庭住址</td>
+                        <td align="center">联系方式</td>
+                        <td align="center">推荐人</td>
+                        <td align="center">行业分会</td>
+                        <td align="center">专委会</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s,iterStat : ${students}" th:class="${iterStat.odd}? 'odd'">
+                        <td align="center" th:text=" ${s.getId()}">123</td>
+                        <td align="center" th:text=" ${s.getUsername()}">234</td>
+                        <td align="center" th:text=" ${s.getName()}">345</td>
+                        <td align="center" th:text=" ${s.getSex()}">456</td>
+                        <td align="center" th:text=" ${s.getDateofbirth()}">567</td>
+                        <td align="center" th:text=" ${s.getAddress()}">567</td>
+                        <td align="center" th:text=" ${s.getPhoneno()}">567</td>
+                        <td align="center" th:text=" ${s.getCommunity()}">567</td>
+                        <td align="center" th:text=" ${s.getCompany()}">567</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div align="center" style="padding-top:2%">
+            <a href="/stu/rulerIDManage">
+                <button type="button" class="btn btn-default">返回</button>
+            </a>
+        </div>
+    </body>
+</html>
