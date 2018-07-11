@@ -42,11 +42,6 @@
                 </tbody>
             </table>
         </div>
-        <div align="center" style="padding-top:2%">
-            <a href="/stu/rulerIDManage">
-                <button type="button" class="btn btn-default">返回</button>
-            </a>
-        </div>
         <div align="center" style="font-size:32px; padding-top:2%; color:#000000">
             推荐信息
         </div>
