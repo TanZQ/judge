@@ -47,5 +47,29 @@
                 <button type="button" class="btn btn-default">返回</button>
             </a>
         </div>
+        <div align="center" style="font-size:32px; padding-top:2%; color:#000000">
+            推荐信息
+        </div>
+        <div style="padding-top:2%">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <td align="center">推荐人</td>
+                        <td align="center">推荐理由</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="s,iterStat : ${suggest}" th:class="${iterStat.odd}? 'odd'">
+                        <td align="center" th:text=" ${s.getSuggestpeople()}">234</td>
+                        <td align="center" th:text=" ${s.getReason()}">345</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div align="center" style="padding-top:2%">
+            <a href="/stu/rulerIDManage">
+                <button type="button" class="btn btn-default">返回</button>
+            </a>
+        </div>
     </body>
 </html>
